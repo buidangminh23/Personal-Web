@@ -996,56 +996,120 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
 
     const SEQUENCES = [
-        { src: 'assets/spritesheet.png',  cols: 14, frames: 181, fw: 180, fh: 320, fps: 30 },
-        { src: 'assets/spritesheet2.png', cols: 14, frames: 181, fw: 180, fh: 320, fps: 30 },
-        { src: 'assets/spritesheet3.png', cols: 12, frames: 138, fw: 120, fh: 134, fps: 24 }
+        { type: 'sprite', src: 'assets/spritesheet.png', cols: 14, frames: 181, width: 180, height: 320, fps: 30 },
+        { type: 'video', src: 'assets/hero-sequence-2.mp4' },
+        { type: 'video', src: 'assets/hero-sequence-3.mp4' }
     ];
 
-    const images = SEQUENCES.map(s => {
-        const img = new Image();
-        img.src = s.src;
-        return img;
+    const assets = SEQUENCES.map((sequence, index) => {
+        if (sequence.type === 'video') {
+            const video = document.createElement('video');
+            video.src = sequence.src;
+            video.muted = true;
+            video.playsInline = true;
+            video.preload = 'auto';
+            video.addEventListener('ended', () => {
+                if (seqIndex === index) nextSequence();
+            });
+            return video;
+        }
+
+        const image = new Image();
+        image.src = sequence.src;
+        return image;
     });
 
     let seqIndex = 0;
     let currentFrame = 0;
     let lastTime = 0;
+    let started = false;
 
-    function draw() {
-        const s = SEQUENCES[seqIndex];
-        const img = images[seqIndex];
-        if (!img.complete) return;
-        const col = currentFrame % s.cols;
-        const row = Math.floor(currentFrame / s.cols);
+    function drawSource(source, sourceWidth, sourceHeight) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const scale = Math.min(canvas.width / s.fw, canvas.height / s.fh);
-        const dw = s.fw * scale;
-        const dh = s.fh * scale;
+        const scale = Math.min(canvas.width / sourceWidth, canvas.height / sourceHeight);
+        const dw = sourceWidth * scale;
+        const dh = sourceHeight * scale;
         const dx = (canvas.width - dw) / 2;
         const dy = (canvas.height - dh) / 2;
-        ctx.drawImage(img, col * s.fw, row * s.fh, s.fw, s.fh, dx, dy, dw, dh);
+        ctx.drawImage(source, dx, dy, dw, dh);
+    }
+
+    function drawSprite(sequence, image) {
+        if (!image.complete) return;
+        const col = currentFrame % sequence.cols;
+        const row = Math.floor(currentFrame / sequence.cols);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const scale = Math.min(canvas.width / sequence.width, canvas.height / sequence.height);
+        const dw = sequence.width * scale;
+        const dh = sequence.height * scale;
+        const dx = (canvas.width - dw) / 2;
+        const dy = (canvas.height - dh) / 2;
+        ctx.drawImage(image, col * sequence.width, row * sequence.height, sequence.width, sequence.height, dx, dy, dw, dh);
+    }
+
+    function drawVideo(video) {
+        if (video.readyState < 2 || !video.videoWidth || !video.videoHeight) return;
+        drawSource(video, video.videoWidth, video.videoHeight);
+    }
+
+    function pauseVideo(index) {
+        const sequence = SEQUENCES[index];
+        if (!sequence || sequence.type !== 'video') return;
+        assets[index].pause();
+    }
+
+    function playVideo(video) {
+        video.currentTime = 0;
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {});
+        }
+    }
+
+    function enterSequence(index) {
+        pauseVideo(seqIndex);
+        seqIndex = index;
+        currentFrame = 0;
+        lastTime = 0;
+        const sequence = SEQUENCES[seqIndex];
+        if (sequence.type === 'video') {
+            playVideo(assets[seqIndex]);
+        }
+    }
+
+    function nextSequence() {
+        enterSequence((seqIndex + 1) % SEQUENCES.length);
     }
 
     function tick(timestamp) {
         requestAnimationFrame(tick);
-        const s = SEQUENCES[seqIndex];
-        if (timestamp - lastTime < 1000 / s.fps) return;
-        lastTime = timestamp;
-        currentFrame++;
-        if (currentFrame >= s.frames) {
-            currentFrame = 0;
-            seqIndex = (seqIndex + 1) % SEQUENCES.length;
+        const sequence = SEQUENCES[seqIndex];
+        const asset = assets[seqIndex];
+
+        if (sequence.type === 'video') {
+            drawVideo(asset);
+            return;
         }
-        draw();
+
+        if (timestamp - lastTime < 1000 / sequence.fps) return;
+        lastTime = timestamp;
+        drawSprite(sequence, asset);
+        currentFrame++;
+        if (currentFrame >= sequence.frames) nextSequence();
     }
 
-    const loaded = images.map(() => false);
-    images.forEach((img, i) => {
-        img.onload = () => {
-            loaded[i] = true;
-            if (loaded[0]) requestAnimationFrame(tick);
-        };
-    });
+    function start() {
+        if (started) return;
+        started = true;
+        enterSequence(0);
+        requestAnimationFrame(tick);
+    }
+
+    if (assets[0].complete) {
+        start();
+    } else {
+        assets[0].onload = start;
+    }
 })();
 
 // ==========================================

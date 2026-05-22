@@ -35,7 +35,8 @@ const MIME_TYPES = {
     '.gif': 'image/gif',
     '.svg': 'image/svg+xml',
     '.ico': 'image/x-icon',
-    '.json': 'application/json'
+    '.json': 'application/json',
+    '.mp4': 'video/mp4'
 };
 
 const clients = new Set();
