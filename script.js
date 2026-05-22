@@ -910,6 +910,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Main Content (Left Column) -->
             <div class="details-main-content">
                 <div class="details-main-visual">
+                    <img src="${project.img}" alt="${project.id}" class="details-main-img-blur">
                     <img src="${project.img}" alt="${project.id}" class="details-main-img">
                 </div>
                 
