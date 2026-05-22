@@ -888,27 +888,12 @@ h1, h2, h3, h4, h5, h6 {
     aspect-ratio: 16/10;
 }
 
-.project-img-blur {
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    object-fit: cover;
-    filter: blur(12px) brightness(0.4);
-    opacity: 0.85;
-    z-index: 1;
-    pointer-events: none;
-}
-
 .project-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background-color: transparent;
+    object-fit: cover;
+    background-color: var(--bg-secondary);
     transition: transform var(--transition-slow);
-    position: relative;
-    z-index: 2;
 }
 
 .project-card:hover .project-img {
@@ -927,7 +912,6 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     opacity: 0;
     transition: opacity var(--transition-normal);
-    z-index: 3;
 }
 
 .project-card:hover .project-overlay {
@@ -1187,26 +1171,11 @@ body.project-detail-open {
     background-color: var(--bg-secondary);
 }
 
-.details-main-img-blur {
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    object-fit: cover;
-    filter: blur(12px) brightness(0.4);
-    opacity: 0.85;
-    z-index: 1;
-    pointer-events: none;
-}
-
 .details-main-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background-color: transparent;
-    position: relative;
-    z-index: 2;
+    object-fit: cover;
+    background-color: var(--bg-secondary);
 }
 
 .details-section {
