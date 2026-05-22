@@ -998,7 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const SEQUENCES = [
         { src: 'assets/spritesheet.png',  cols: 14, frames: 181, fw: 180, fh: 320, fps: 30 },
         { src: 'assets/spritesheet2.png', cols: 14, frames: 181, fw: 180, fh: 320, fps: 30 },
-        { src: 'assets/spritesheet3.png', cols: 12, frames: 138, fw: 120, fh: 180, fps: 24 }
+        { src: 'assets/spritesheet3.png', cols: 12, frames: 138, fw: 120, fh: 134, fps: 24 }
     ];
 
     const images = SEQUENCES.map(s => {
@@ -1018,7 +1018,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const col = currentFrame % s.cols;
         const row = Math.floor(currentFrame / s.cols);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, col * s.fw, row * s.fh, s.fw, s.fh, 0, 0, canvas.width, canvas.height);
+        const scale = Math.min(canvas.width / s.fw, canvas.height / s.fh);
+        const dw = s.fw * scale;
+        const dh = s.fh * scale;
+        const dx = (canvas.width - dw) / 2;
+        const dy = (canvas.height - dh) / 2;
+        ctx.drawImage(img, col * s.fw, row * s.fh, s.fw, s.fh, dx, dy, dw, dh);
     }
 
     function tick(timestamp) {
