@@ -122,6 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
             "form-submit": "Gửi tin nhắn",
             "footer-copyright": "© 2026 Bùi Đăng Minh. Tất cả quyền được bảo lưu.",
             "footer-designed-by": "Thiết kế bởi",
+            "footer-designer-name": "Bùi Đăng Minh",
+            "about-fullname-val": "Bùi Đăng Minh",
+            "float-messenger": "Messenger: Bùi Đăng Minh<small>(8h-21h)</small>",
+            "float-zalo": "Zalo: Bùi Đăng Minh<small>(8h-21h)</small>",
+            "float-facebook": "Facebook: Bùi Đăng Minh",
+            "float-instagram": "Instagram: buidangminh_06",
+            "float-telegram": "Telegram: Gemeraleakschannel",
+            "float-phone": "Hotline: 0384 741 350<small>(8h-21h)</small>",
             "toast-success": "Tin nhắn của bạn đã được gửi thành công! Cảm ơn bạn.",
             "submit-loading": "Đang gửi...",
             "view-details": "Xem chi tiết",
@@ -266,8 +274,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "form-placeholder-email": "name@gmail.com",
             "form-placeholder-message": "The project details or job description you'd like to discuss...",
             "form-submit": "Send Message",
-            "footer-copyright": "© 2026 Bùi Đăng Minh. All rights reserved.",
+            "footer-copyright": "© 2026 Bui Dang Minh. All rights reserved.",
             "footer-designed-by": "Designed by",
+            "footer-designer-name": "Bui Dang Minh",
+            "about-fullname-val": "Bui Dang Minh",
+            "float-messenger": "Messenger: Bui Dang Minh<small>(8am-9pm)</small>",
+            "float-zalo": "Zalo: Bui Dang Minh<small>(8am-9pm)</small>",
+            "float-facebook": "Facebook: Bui Dang Minh",
+            "float-instagram": "Instagram: buidangminh_06",
+            "float-telegram": "Telegram: Gemeraleakschannel",
+            "float-phone": "Hotline: 0384 741 350<small>(8am-9pm)</small>",
             "toast-success": "Your message has been sent successfully! Thank you.",
             "submit-loading": "Sending...",
             "view-details": "View details",
@@ -423,7 +439,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key] !== undefined) {
-                el.textContent = translations[lang][key];
+                const val = translations[lang][key];
+                if (val.includes('<')) {
+                    el.innerHTML = val;
+                } else {
+                    el.textContent = val;
+                }
             }
         });
 

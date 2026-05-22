@@ -408,9 +408,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform var(--transition-normal);
 }
 
-.logo:hover .logo-img {
-    transform: rotate(360deg);
-}
 
 .logo-accent {
     color: var(--primary);
