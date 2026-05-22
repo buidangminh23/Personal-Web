@@ -1272,3 +1272,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') closeWidget();
     });
 })();
+
+(function() {
+    const files = ['/', '/script.js', '/style.css'];
+    let etags = {};
+
+    async function getTag(url) {
+        try {
+            const res = await fetch(url + '?t=' + Date.now(), {
+                method: 'HEAD',
+                headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+            });
+            return res.headers.get('etag') || res.headers.get('last-modified');
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async function init() {
+        for (const file of files) {
+            etags[file] = await getTag(file);
+        }
+    }
+
+    async function check() {
+        for (const file of files) {
+            const current = await getTag(file);
+            if (current && etags[file] && current !== etags[file]) {
+                window.location.reload();
+                return;
+            }
+            if (current && !etags[file]) {
+                etags[file] = current;
+            }
+        }
+    }
+
+    init().then(() => {
+        setInterval(check, 15000);
+    });
+})();
