@@ -1019,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const SEQUENCES = [
         { type: 'sprite', src: 'assets/spritesheet.png', cols: 14, frames: 181, width: 180, height: 320, fps: 30 },
         { type: 'video', src: 'assets/hero-sequence-2.mp4', backgroundTolerance: 58 },
-        { type: 'sprite', src: 'assets/hero-sequence-3-cutout-v2.png', cols: 12, frames: 140, width: 294, height: 320, fps: 24 }
+        { type: 'sprite', src: 'assets/hero-sequence-3-cutout-v3.png', cols: 12, frames: 140, width: 294, height: 320, fps: 24 }
     ];
 
     const assets = SEQUENCES.map((sequence, index) => {
