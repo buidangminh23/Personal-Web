@@ -137,30 +137,30 @@ document.addEventListener('DOMContentLoaded', () => {
             "project-details-title": "Chi Tiết Dự Án",
             "proj-meta-category": "Danh mục",
             "proj-meta-date": "Thời gian",
-            "proj-meta-tech": "Công nghệ",
+            "proj-meta-tech": "Ngôn ngữ sử dụng",
             "proj-meta-links": "Liên kết",
             "proj-meta-demo": "Trải nghiệm trực tiếp",
             "proj-meta-github": "Xem mã nguồn",
             "proj-section-overview": "Tổng Quan Dự Án",
             "proj-section-features": "Tính Năng Nổi Bật",
-            "proj1-detail-overview": "Personal Web Portfolio là website cá nhân được tự tay thiết kế và xây dựng hoàn toàn từ đầu bằng HTML5/CSS3/JavaScript thuần — không framework. Toàn bộ hiệu ứng animation, hệ thống i18n, theme switcher và nhân vật 2D đều được implement thủ công. Website đã được tối ưu SEO, đạt Lighthouse score cao và deploy tự động lên Vercel qua Git. Đây là nơi showcase toàn bộ kỹ năng, dự án thực tế và hành trình học tập của tôi.",
-            "proj1-detail-f1": "Giao diện glassmorphism cao cấp với backdrop-filter, gradient động và hiệu ứng scroll-reveal mượt mà, responsive hoàn toàn trên mobile/tablet/desktop.",
-            "proj1-detail-f2": "Dark/Light mode với CSS custom properties, lưu preference vào localStorage và transition animation 0.3s không giật.",
-            "proj1-detail-f3": "Hệ thống i18n tự xây dựng hỗ trợ Tiếng Việt/English, chuyển đổi tức thì toàn bộ nội dung bằng data-i18n attribute.",
-            "proj1-detail-f4": "Nhân vật 2D hoạt hình tương tác (Lego) sử dụng Canvas API, requestAnimationFrame và spritesheet 3 bộ animation khác nhau.",
-            "proj1-detail-f5": "Auto-push script (autopush.bat) tự động detect thay đổi, commit và deploy lên Vercel production trong vòng 30 giây.",
-            "proj2-detail-overview": "GEMERA (v5.0) là hệ thống Telegram Bot quy mô lớn viết bằng Python thuần, đang chạy production 24/7. Bot tự động scan nhiều kênh Telegram nguồn, dùng Gemini Vision AI để phát hiện và loại bỏ bài trùng lặp theo nội dung ảnh (perceptual hash + AI embedding), rồi đăng lên kênh đích theo lịch. Dashboard web tích hợp sẵn trong bot (không cần server riêng) cho phép quản lý toàn bộ qua trình duyệt. Đây là dự án có quy mô code lớn nhất của tôi với hơn 4,500+ dòng code trong một file Python duy nhất.",
-            "proj2-detail-f2": "AI Vision dedup 2 lớp: perceptual hash (imagehash) + Gemini Vision embedding, loại bỏ bài trùng kể cả khi ảnh bị crop hay thay đổi nhẹ.",
-            "proj2-detail-f1": "Auto-scan đa kênh với chu kỳ tùy chỉnh, review queue thủ công, chế độ auto-post và giới hạn tần suất đăng thông minh.",
-            "proj2-detail-f3": "Dashboard web real-time tích hợp sẵn: heatmap giờ đăng, top 10 posts, thống kê reaction, phân tích theo mùa PUBG, theo dõi đối thủ.",
-            "proj2-detail-f4": "AI Weekly Summary tự động tổng hợp highlight tuần qua Gemini/Claude API, với cache và fallback thông minh.",
-            "proj2-detail-f5": "Hệ thống toàn diện: SQLite database, backup/restore ZIP, health check, theme customization, PWA support và orjson cho hiệu năng cao.",
-            "proj3-detail-overview": "Minh Stark Agent OS là hệ thống AI agent cá nhân chạy hoàn toàn trên máy local tại localhost:2006, xây dựng bằng Python + Flask. Điểm nổi bật là AutoPilot Manager — một lớp điều phối thông minh nhận yêu cầu tiếng Việt tự nhiên, tự phân tích intent và route đến đúng agent con phù hợp. Hệ thống hỗ trợ tích hợp Gemini API cho AI Chat thật sự và Langflow workflow engine cho các tác vụ phức tạp, đồng thời có fallback local khi không có internet.",
-            "proj3-detail-f1": "AutoPilot Manager tự phân tích intent từ tiếng Việt, chọn đúng agent con (Chat/Work/Study/Automation/DataScience/Review) và model AI phù hợp.",
-            "proj3-detail-f2": "Work Agent quản lý task với deadline, độ ưu tiên (cao/trung/thấp), trạng thái và ghi lịch sử — giao tiếp hoàn toàn bằng tiếng Việt tự nhiên.",
-            "proj3-detail-f3": "Study Agent tạo lịch học thông minh, chia phiên Pomodoro, theo dõi tiến độ học từng môn và đề xuất điều chỉnh.",
-            "proj3-detail-f4": "Automation Agent cho phép tạo, bật/tắt và chạy thủ công các automation workflow tùy chỉnh, ghi lại toàn bộ lịch sử thực thi.",
-            "proj3-detail-f5": "Tích hợp Langflow workflow engine (local executor), Gemini 2.0 Flash API, nạp profile cá nhân tự động và REST API đầy đủ tại /api/."
+            "proj1-detail-overview": "Personal Web Portfolio là một website cá nhân được thiết kế độc bản và phát triển hoàn chỉnh từ con số 0 bằng HTML5, CSS3 và JavaScript thuần (không dùng bất kỳ thư viện hay framework ngoài nào). Dự án tập trung tối ưu hóa hiệu năng, giao diện responsive tuyệt đối và trải nghiệm người dùng cao cấp. Toàn bộ cơ chế đổi giao diện (Dark/Light mode), bộ dịch đa ngôn ngữ i18n, hiệu ứng chuyển động scroll-reveal và nhân vật 2D tương tác đều được xây dựng thủ công. Trang web cũng tích hợp hệ thống phát hiện thay đổi và reload live tự động phục vụ trong môi trường phát triển.",
+            "proj1-detail-f1": "Giao diện Glassmorphism hiện đại ứng dụng các kỹ thuật CSS nâng cao như backdrop-filter, gradient chuyển màu mượt mà, và cơ chế scroll-reveal tự nhiên trên mọi thiết bị di động, máy tính bảng và máy tính để bàn.",
+            "proj1-detail-f2": "Hệ thống Dark/Light mode linh hoạt dùng CSS custom variables, tự động lưu và đồng bộ tùy chọn của người dùng qua localStorage cùng hiệu ứng chuyển đổi mượt mà 0.3s không gây nhấp nháy giao diện.",
+            "proj1-detail-f3": "Bộ dịch đa ngôn ngữ (i18n) tự phát triển hỗ trợ chuyển đổi tức thì giữa Tiếng Việt và Tiếng Anh mà không cần tải lại trang, hoạt động thông qua việc quét và ánh xạ động các thuộc tính data-i18n.",
+            "proj1-detail-f4": "Nhân vật Lego 2D độc đáo hiển thị bằng HTML5 Canvas API và requestAnimationFrame, hỗ trợ tương tác trực quan với 3 bộ spritesheet chuyển động (chào hỏi, đứng chờ, nháy mắt) chất lượng cao.",
+            "proj1-detail-f5": "Tích hợp công cụ phát triển chuyên dụng bao gồm script tự động chạy ngầm theo dõi thay đổi mã nguồn để reload trang ngay lập tức, và file batch triển khai nhanh lên Vercel production chỉ trong 30 giây.",
+            "proj2-detail-overview": "GEMERA (phiên bản 5.0) là một hệ thống Telegram Bot tự động hóa quy trình quản trị nội dung với quy mô lớn, viết hoàn toàn bằng Python và vận hành bền bỉ 24/7. Hệ thống tự động thu thập bài viết từ nhiều kênh nguồn, sau đó áp dụng trí tuệ nhân tạo (Gemini Vision AI) kết hợp thuật toán mã hóa ảnh (perceptual hashing) để lọc bỏ triệt để các bài viết trùng lặp hoặc tương đồng về nội dung. Dashboard quản trị được lập trình nhúng trực tiếp ngay bên trong tiến trình của bot mà không cần chạy server độc lập, cung cấp các biểu đồ phân tích trực quan về hiệu suất kênh theo thời gian thực.",
+            "proj2-detail-f1": "Tự động quét và thu thập dữ liệu đa kênh nguồn theo chu kỳ cấu hình động, tích hợp bộ đệm hàng đợi duyệt bài thủ công, chế độ tự động đăng bài và thuật toán kiểm soát tần suất đăng thông minh tránh spam.",
+            "proj2-detail-f2": "Công nghệ chống trùng bài đăng 2 lớp cực kỳ mạnh mẽ: phân tích mã băm hình ảnh (imagehash) kết hợp so khớp vector đặc trưng (AI embedding) qua Gemini Vision, ngăn chặn bài trùng kể cả khi ảnh bị cắt cúp hoặc chỉnh màu.",
+            "proj2-detail-f3": "Bảng điều khiển Web Dashboard trực quan tích hợp sẵn: thống kê phân bố giờ đăng tối ưu (heatmap), top 10 bài viết thịnh hành, biểu đồ tương tác cảm xúc, phân tích xu hướng game PUBG và báo cáo hoạt động của đối thủ.",
+            "proj2-detail-f4": "Hệ thống tự động biên soạn báo cáo tóm tắt nổi bật hàng tuần (Weekly Summary) ứng dụng mô hình ngôn ngữ lớn Gemini/Claude API, trang bị cơ chế lưu dữ liệu đệm (caching) và tự động chuyển đổi mô hình dự phòng khi lỗi.",
+            "proj2-detail-f5": "Kiến trúc hệ thống toàn diện: quản trị cơ sở dữ liệu SQLite cục bộ, tính năng sao lưu/khôi phục tự động qua file ZIP, hệ thống kiểm tra sức khỏe tự phục hồi, hỗ trợ PWA và thư viện orjson tối ưu hóa tốc độ xử lý dữ liệu JSON.",
+            "proj3-detail-overview": "Minh Stark Agent OS là hệ thống điều phối AI Agent cá nhân chạy hoàn toàn cục bộ trên máy trạm (tại cổng 2006) bằng ngôn ngữ Python và Flask. Điểm cốt lõi của hệ thống là AutoPilot Manager — một bộ não trung tâm nhận yêu cầu trực tiếp bằng ngôn ngữ tự nhiên (tiếng Việt), tự phân tích mục đích người dùng để định tuyến chính xác đến các AI Agent chuyên biệt. Hệ thống tích hợp sâu với Gemini API cho các hội thoại thông minh và hỗ trợ Langflow để thực thi các quy trình tự động hóa phức tạp, đồng thời tích hợp cơ chế cơ sở dữ liệu vector cục bộ để làm bộ nhớ dài hạn.",
+            "proj3-detail-f1": "Bộ điều phối AutoPilot Manager phân tích ý định từ ngôn ngữ tự nhiên tiếng Việt, tự động kích hoạt Agent phù hợp (Trò chuyện, Công việc, Học tập, Tự động hóa, Khoa học dữ liệu) và cấu hình mô hình tối ưu.",
+            "proj3-detail-f2": "Agent Quản lý công việc (Work Agent) hỗ trợ lập lịch trình, thiết lập mức độ ưu tiên, cập nhật tiến độ dự án và ghi nhận lịch sử công việc thông qua đối thoại trực tiếp bằng ngôn ngữ tự nhiên.",
+            "proj3-detail-f3": "Agent Hỗ trợ học tập (Study Agent) hỗ trợ phân bổ thời gian học thông minh theo phiên Pomodoro, đo lường tiến độ tiếp thu kiến thức của từng môn học và tự động đưa ra các khuyến nghị tối ưu hóa lịch học.",
+            "proj3-detail-f4": "Agent Tự động hóa (Automation Agent) quản lý và kích hoạt các kịch bản tự động hóa hệ thống (như gửi email, dọn dẹp file, cào dữ liệu), ghi chép chi tiết nhật ký thực thi để dễ dàng theo dõi lỗi.",
+            "proj3-detail-f5": "Tích hợp sâu Langflow (local engine), Gemini 2.0 Flash API, cơ chế tự động nạp hồ sơ cá nhân làm ngữ cảnh nền, cung cấp bộ công cụ Khoa học dữ liệu (Data Science Agent) xử lý file CSV và vẽ biểu đồ trực quan."
         },
         en: {
             "nav-home": "Home",
@@ -291,30 +291,30 @@ document.addEventListener('DOMContentLoaded', () => {
             "project-details-title": "Project Details",
             "proj-meta-category": "Category",
             "proj-meta-date": "Timeline",
-            "proj-meta-tech": "Technologies",
+            "proj-meta-tech": "Languages Used",
             "proj-meta-links": "Links",
             "proj-meta-demo": "Live Preview",
             "proj-meta-github": "View Source Code",
             "proj-section-overview": "Project Overview",
             "proj-section-features": "Key Features",
-            "proj1-detail-overview": "Personal Web Portfolio is a personal website fully designed and built from scratch using vanilla HTML5/CSS3/JavaScript — no frameworks. All animations, the i18n system, theme switcher, and the 2D character are custom-implemented. The site is SEO-optimized, achieves a high Lighthouse score, and auto-deploys to Vercel via Git. This is where I showcase all my skills, real projects, and learning journey.",
-            "proj1-detail-f1": "Premium glassmorphism UI with backdrop-filter, dynamic gradients and smooth scroll-reveal animations — fully responsive on mobile/tablet/desktop.",
-            "proj1-detail-f2": "Dark/Light mode using CSS custom properties, localStorage persistence and 0.3s transition with no flicker.",
-            "proj1-detail-f3": "Custom-built i18n system supporting Vietnamese/English — instantly switches all content via data-i18n attributes.",
-            "proj1-detail-f4": "Interactive 2D Lego character animated with Canvas API, requestAnimationFrame and 3 different spritesheet animation sets.",
-            "proj1-detail-f5": "Auto-push script (autopush.bat) detects file changes, auto-commits and deploys to Vercel production within 30 seconds.",
-            "proj2-detail-overview": "GEMERA (v5.0) is a large-scale Telegram Bot system written in pure Python, running in production 24/7. It auto-scans multiple Telegram source channels, uses Gemini Vision AI to detect and remove duplicate posts (perceptual hash + AI embedding), then schedules posts to the target channel. A web dashboard is built directly into the bot — no separate server needed — for full browser-based management. This is my largest codebase: 4,500+ lines of Python in a single file.",
-            "proj2-detail-f1": "Multi-channel auto-scan with configurable intervals, manual review queue, auto-post mode and smart rate limiting.",
-            "proj2-detail-f2": "Two-layer AI dedup: perceptual hash (imagehash) + Gemini Vision embedding — catches duplicates even with cropped or slightly altered images.",
-            "proj2-detail-f3": "Built-in real-time dashboard: posting heatmap, top 10 posts, reaction breakdown, PUBG season analytics, and competitor tracking.",
-            "proj2-detail-f4": "Automated AI Weekly Summary via Gemini/Claude API with smart caching and fallback logic.",
-            "proj2-detail-f5": "Full-featured system: SQLite database, ZIP backup/restore, health check, theme customization, PWA support and orjson for high-performance I/O.",
-            "proj3-detail-overview": "Minh Stark Agent OS is a personal AI agent system running fully locally at localhost:2006, built with Python + Flask. The standout feature is the AutoPilot Manager — an intelligent orchestration layer that receives natural Vietnamese text, analyzes the intent, and routes it to the right sub-agent. The system supports Gemini API for real AI Chat and Langflow workflow engine for complex tasks, with a local fallback when offline.",
-            "proj3-detail-f1": "AutoPilot Manager analyzes Vietnamese intent and routes to the right sub-agent (Chat/Work/Study/Automation/DataScience/Review) and AI model automatically.",
-            "proj3-detail-f2": "Work Agent manages tasks with deadlines, priority levels (high/medium/low), status tracking and full history — all in natural Vietnamese.",
-            "proj3-detail-f3": "Study Agent builds smart study schedules, splits into Pomodoro sessions, tracks per-subject progress and suggests adjustments.",
-            "proj3-detail-f4": "Automation Agent allows creating, toggling and manually running custom automation workflows with full execution history logging.",
-            "proj3-detail-f5": "Integrates Langflow workflow engine (local executor), Gemini 2.0 Flash API, auto-loads personal profile as context and exposes a full REST API at /api/."
+            "proj1-detail-overview": "Personal Web Portfolio is a unique personal website designed and built from scratch using vanilla HTML5, CSS3, and JavaScript, entirely free of external frameworks or libraries. The project focuses on high performance, absolute responsiveness, and a premium user experience. Every feature—including the dark/light mode system, custom i18n localization engine, scroll-reveal layout, and interactive 2D character—is custom-developed. It also integrates an automated change-detection and hot-reload mechanism to accelerate local development.",
+            "proj1-detail-f1": "Modern Glassmorphism UI utilizing advanced CSS techniques like backdrop-filter, smooth linear gradients, and responsive scroll-reveal animations across mobile, tablet, and desktop viewports.",
+            "proj1-detail-f2": "Flicker-free Dark/Light mode using CSS custom properties, persistent user preferences saved via localStorage, and a smooth 0.3s transition animation.",
+            "proj1-detail-f3": "In-house i18n localization engine supporting instantaneous Vietnamese/English toggling without page reloads, driven by scanning and dynamically mapping data-i18n attributes.",
+            "proj1-detail-f4": "Unique interactive 2D Lego character rendered via HTML5 Canvas API and requestAnimationFrame, utilizing 3 distinct spritesheet animation sets (greeting, idle, blinking).",
+            "proj1-detail-f5": "Dedicated developer utility integration featuring a background file watcher for instant page reload and a custom batch script for 30-second production deployment to Vercel.",
+            "proj2-detail-overview": "GEMERA (v5.0) is a large-scale, automated content curation Telegram Bot system written entirely in Python and running in production 24/7. It automatically gathers media posts from multiple source channels and runs them through a two-layer deduplication engine using Gemini Vision AI and image perceptual hashing. A responsive web-based administration dashboard is embedded directly within the bot's runtime, providing real-time channel statistics and data visualizations without requiring a separate web server.",
+            "proj2-detail-f1": "Automated multi-channel scraping with dynamic intervals, featuring a manual review queue, auto-post mode, and rate-limiting algorithms to maintain clean posting frequencies.",
+            "proj2-detail-f2": "Advanced two-layer media deduplication combining perceptual image hashing with high-dimensional vector embeddings via Gemini Vision, detecting duplicates even if cropped or color-edited.",
+            "proj2-detail-f3": "Integrated real-time Web Dashboard showing optimal posting times (heatmap), top 10 trending posts, reaction distribution chart, PUBG gaming analytics, and competitor benchmarking.",
+            "proj2-detail-f4": "Automated Weekly Summary generator driven by Gemini and Claude APIs, equipped with smart response caching and automatic fallback models to ensure service continuity.",
+            "proj2-detail-f5": "Robust system architecture featuring local SQLite management, ZIP backup/restore tools, self-healing health checkers, PWA compatibility, and orjson for high-performance JSON processing.",
+            "proj3-detail-overview": "Minh Stark Agent OS is a localized personal AI agent orchestration system running fully on localhost:2006, engineered using Python and Flask. Its core component is the AutoPilot Manager, which parses natural language requests in Vietnamese, deduces user intents, and routes them to specialized sub-agents. It integrates Gemini API for complex reasoning and Langflow for running visual automation workflows, alongside a local vector database for long-term user memory.",
+            "proj3-detail-f1": "AutoPilot Manager orchestrator that parses natural Vietnamese text to automatically dispatch specialized agents (Chat, Work, Study, Automation, Data Science) and configure the best model.",
+            "proj3-detail-f2": "Work Agent for task management, supporting schedule planning, priority setting, progress tracking, and history logging, completely managed through natural language conversations.",
+            "proj3-detail-f3": "Study Agent providing intelligent study schedules using Pomodoro technique, tracking academic progress per subject, and suggesting personalized adjustments.",
+            "proj3-detail-f4": "Automation Agent to configure and trigger custom background automation tasks (emailing, cleanups, scraping) with detailed run history logs for troubleshooting.",
+            "proj3-detail-f5": "Deep integration with Langflow (local engine), Gemini 2.0 Flash API, contextual user profiles, and a Data Science Agent capable of processing CSV data and rendering visualizations."
         }
     };
 
@@ -945,14 +945,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 
+                ${project.demoLink && project.demoLink !== '#' ? `
                 <div class="sidebar-info-group">
                     <span class="sidebar-label" data-i18n="proj-meta-links">Liên kết</span>
                     <div class="sidebar-links">
-                        ${project.demoLink && project.demoLink !== '#' ? `<a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" class="sidebar-btn sidebar-btn-primary glow-btn">
+                        <a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" class="sidebar-btn sidebar-btn-primary glow-btn">
                             <span data-i18n="proj-meta-demo">Trải nghiệm trực tiếp</span> <i data-lucide="external-link"></i>
-                        </a>` : ''}
+                        </a>
                     </div>
                 </div>
+                ` : ''}
             </div>
         `;
     }
