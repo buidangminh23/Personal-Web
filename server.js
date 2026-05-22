@@ -41,6 +41,17 @@ const MIME_TYPES = {
 
 const clients = new Set();
 
+// Heartbeat to keep SSE connections alive and prevent timeout
+setInterval(() => {
+    clients.forEach(client => {
+        try {
+            client.write(':ping\n\n');
+        } catch (e) {
+            clients.delete(client);
+        }
+    });
+}, 15000);
+
 // Auto Git Push on Changes
 let gitPushTimeout;
 function triggerVercelDeploy() {
@@ -144,8 +155,10 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, {
             'Content-Type': 'text/event-stream',
             'Cache-Control': 'no-cache',
-            'Connection': 'keep-alive'
+            'Connection': 'keep-alive',
+            'Access-Control-Allow-Origin': '*'
         });
+        res.write(':ok\n\n');
         clients.add(res);
         req.on('close', () => {
             clients.delete(res);
