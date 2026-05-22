@@ -352,15 +352,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     // Check saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light-theme');
-        body.classList.remove('dark-theme');
-        if (themeToggle) themeToggle.setAttribute('aria-expanded', 'true');
-    } else {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
         body.classList.add('dark-theme');
         body.classList.remove('light-theme');
         if (themeToggle) themeToggle.setAttribute('aria-expanded', 'false');
+    } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        if (themeToggle) themeToggle.setAttribute('aria-expanded', 'true');
     }
 
     if (themeToggle) {
@@ -993,37 +993,54 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
     const canvas = document.getElementById('character-canvas');
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
-    const COLS = 14;
-    const TOTAL_FRAMES = 181;
-    const FW = 180;
-    const FH = 320;
-    const FPS = 30;
 
-    const img = new Image();
-    img.src = 'assets/spritesheet.png';
+    const SEQUENCES = [
+        { src: 'assets/spritesheet.png',  cols: 14, frames: 181, fw: 180, fh: 320, fps: 30 },
+        { src: 'assets/spritesheet2.png', cols: 14, frames: 181, fw: 180, fh: 320, fps: 30 },
+        { src: 'assets/spritesheet3.png', cols: 12, frames: 138, fw: 120, fh: 180, fps: 24 }
+    ];
 
+    const images = SEQUENCES.map(s => {
+        const img = new Image();
+        img.src = s.src;
+        return img;
+    });
+
+    let seqIndex = 0;
     let currentFrame = 0;
     let lastTime = 0;
-    const interval = 1000 / FPS;
 
     function draw() {
-        const col = currentFrame % COLS;
-        const row = Math.floor(currentFrame / COLS);
+        const s = SEQUENCES[seqIndex];
+        const img = images[seqIndex];
+        if (!img.complete) return;
+        const col = currentFrame % s.cols;
+        const row = Math.floor(currentFrame / s.cols);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, col * FW, row * FH, FW, FH, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, col * s.fw, row * s.fh, s.fw, s.fh, 0, 0, canvas.width, canvas.height);
     }
 
     function tick(timestamp) {
         requestAnimationFrame(tick);
-        if (timestamp - lastTime < interval) return;
+        const s = SEQUENCES[seqIndex];
+        if (timestamp - lastTime < 1000 / s.fps) return;
         lastTime = timestamp;
-        currentFrame = (currentFrame + 1) % TOTAL_FRAMES;
+        currentFrame++;
+        if (currentFrame >= s.frames) {
+            currentFrame = 0;
+            seqIndex = (seqIndex + 1) % SEQUENCES.length;
+        }
         draw();
     }
 
-    img.onload = () => requestAnimationFrame(tick);
+    const loaded = images.map(() => false);
+    images.forEach((img, i) => {
+        img.onload = () => {
+            loaded[i] = true;
+            if (loaded[0]) requestAnimationFrame(tick);
+        };
+    });
 })();
 
 // ==========================================
