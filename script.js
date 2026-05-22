@@ -1019,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const SEQUENCES = [
         { type: 'sprite', src: 'assets/spritesheet.png', cols: 14, frames: 181, width: 180, height: 320, fps: 30 },
         { type: 'video', src: 'assets/hero-sequence-2.mp4', backgroundTolerance: 58 },
-        { type: 'video', src: 'assets/hero-sequence-3.mp4', backgroundTolerance: 82, fit: 'cover', alignY: 'bottom' }
+        { type: 'video', src: 'assets/hero-sequence-3.mp4', backgroundTolerance: 104, fit: 'cover', alignY: 'bottom', edgeMask: true }
     ];
 
     const assets = SEQUENCES.map((sequence, index) => {
@@ -1110,6 +1110,50 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
+    function isBackgroundPixel(pixels, index, background, tolerance) {
+        const r = pixels[index];
+        const g = pixels[index + 1];
+        const b = pixels[index + 2];
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        const spread = max - min;
+        const brightness = (r + g + b) / 3;
+        const distance = Math.hypot(r - background.r, g - background.g, b - background.b);
+        return distance < tolerance || (brightness > 174 && spread < 76) || (r > 206 && g > 206 && b > 206 && spread < 82);
+    }
+
+    function removeConnectedBackground(pixels, width, height, background, tolerance) {
+        const visited = new Uint8Array(width * height);
+        const queue = [];
+        function push(x, y) {
+            if (x < 0 || x >= width || y < 0 || y >= height) return;
+            const point = y * width + x;
+            if (visited[point]) return;
+            visited[point] = 1;
+            const index = point * 4;
+            if (!isBackgroundPixel(pixels, index, background, tolerance)) return;
+            pixels[index + 3] = 0;
+            queue.push(point);
+        }
+        for (let x = 0; x < width; x++) {
+            push(x, 0);
+            push(x, height - 1);
+        }
+        for (let y = 0; y < height; y++) {
+            push(0, y);
+            push(width - 1, y);
+        }
+        for (let i = 0; i < queue.length; i++) {
+            const point = queue[i];
+            const x = point % width;
+            const y = Math.floor(point / width);
+            push(x + 1, y);
+            push(x - 1, y);
+            push(x, y + 1);
+            push(x, y - 1);
+        }
+    }
+
     function drawVideo(sequence, video) {
         if (video.readyState < 2 || !video.videoWidth || !video.videoHeight) return;
         drawSource(video, video.videoWidth, video.videoHeight, sequence.fit, sequence.alignY);
@@ -1117,14 +1161,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const pixels = frame.data;
         const background = getFrameBackground(pixels, canvas.width, canvas.height);
         const tolerance = sequence.backgroundTolerance || 58;
-        for (let i = 0; i < pixels.length; i += 4) {
-            const r = pixels[i];
-            const g = pixels[i + 1];
-            const b = pixels[i + 2];
-            const spread = Math.max(r, g, b) - Math.min(r, g, b);
-            const distance = Math.hypot(r - background.r, g - background.g, b - background.b);
-            if ((r > 206 && g > 206 && b > 206 && spread < 58) || distance < tolerance) {
-                pixels[i + 3] = 0;
+        if (sequence.edgeMask) {
+            removeConnectedBackground(pixels, canvas.width, canvas.height, background, tolerance);
+        } else {
+            for (let i = 0; i < pixels.length; i += 4) {
+                if (isBackgroundPixel(pixels, i, background, tolerance)) {
+                    pixels[i + 3] = 0;
+                }
             }
         }
         ctx.putImageData(frame, 0, 0);
