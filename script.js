@@ -997,8 +997,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const SEQUENCES = [
         { type: 'sprite', src: 'assets/spritesheet.png', cols: 14, frames: 181, width: 180, height: 320, fps: 30 },
-        { type: 'video', src: 'assets/hero-sequence-2.mp4' },
-        { type: 'video', src: 'assets/hero-sequence-3.mp4' }
+        { type: 'video', src: 'assets/hero-sequence-2.mp4', backgroundTolerance: 58 },
+        { type: 'video', src: 'assets/hero-sequence-3.mp4', backgroundTolerance: 82 }
     ];
 
     const assets = SEQUENCES.map((sequence, index) => {
@@ -1047,17 +1047,40 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.drawImage(image, col * sequence.width, row * sequence.height, sequence.width, sequence.height, dx, dy, dw, dh);
     }
 
-    function drawVideo(video) {
+    function getFrameBackground(pixels, width, height) {
+        const samples = [
+            0,
+            (width - 1) * 4,
+            (height - 1) * width * 4,
+            ((height - 1) * width + width - 1) * 4
+        ];
+        const color = samples.reduce((acc, index) => {
+            acc.r += pixels[index];
+            acc.g += pixels[index + 1];
+            acc.b += pixels[index + 2];
+            return acc;
+        }, { r: 0, g: 0, b: 0 });
+        return {
+            r: color.r / samples.length,
+            g: color.g / samples.length,
+            b: color.b / samples.length
+        };
+    }
+
+    function drawVideo(sequence, video) {
         if (video.readyState < 2 || !video.videoWidth || !video.videoHeight) return;
         drawSource(video, video.videoWidth, video.videoHeight);
         const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const pixels = frame.data;
+        const background = getFrameBackground(pixels, canvas.width, canvas.height);
+        const tolerance = sequence.backgroundTolerance || 58;
         for (let i = 0; i < pixels.length; i += 4) {
             const r = pixels[i];
             const g = pixels[i + 1];
             const b = pixels[i + 2];
             const spread = Math.max(r, g, b) - Math.min(r, g, b);
-            if (r > 220 && g > 220 && b > 220 && spread < 45) {
+            const distance = Math.hypot(r - background.r, g - background.g, b - background.b);
+            if ((r > 206 && g > 206 && b > 206 && spread < 58) || distance < tolerance) {
                 pixels[i + 3] = 0;
             }
         }
@@ -1099,7 +1122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const asset = assets[seqIndex];
 
         if (sequence.type === 'video') {
-            drawVideo(asset);
+            drawVideo(sequence, asset);
             return;
         }
 
