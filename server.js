@@ -40,13 +40,67 @@ const MIME_TYPES = {
 
 const clients = new Set();
 
-// Live Reload File Watcher
+// Auto Git Push on Changes
+let gitPushTimeout;
+function triggerAutoGitPush(filename) {
+    clearTimeout(gitPushTimeout);
+    gitPushTimeout = setTimeout(() => {
+        exec('git status --porcelain', (err, stdout) => {
+            if (err) {
+                console.error(`[Auto-Git] Status check failed: ${err.message}`);
+                return;
+            }
+            if (!stdout.trim()) {
+                // No actual changes to commit
+                return;
+            }
+            console.log(`\n[Auto-Git] Changes detected. Preparing auto-push to GitHub...`);
+            exec('git add .', (err) => {
+                if (err) {
+                    console.error(`[Auto-Git] Git add failed: ${err.message}`);
+                    return;
+                }
+                const timestamp = new Date().toLocaleTimeString('vi-VN', { hour12: false });
+                const commitMsg = `auto: update portfolio at ${timestamp} (saved ${path.basename(filename)})`;
+                
+                exec(`git commit -m "${commitMsg}"`, (err) => {
+                    if (err) {
+                        console.error(`[Auto-Git] Git commit failed: ${err.message}`);
+                        return;
+                    }
+                    console.log(`[Auto-Git] Committed locally: "${commitMsg}"`);
+                    console.log(`[Auto-Git] Pushing changes to GitHub...`);
+                    
+                    exec('git push origin main', (err) => {
+                        if (err) {
+                            console.error(`[Auto-Git] Git push failed: ${err.message}`);
+                        } else {
+                            console.log(`✨ [Auto-Git] Successfully pushed changes to GitHub!`);
+                        }
+                    });
+                });
+            });
+        });
+    }, 10000); // 10 seconds debounce to prevent spamming commits
+}
+
+// Live Reload File Watcher & Auto-Git Integration
 let reloadTimeout;
+const WATCHED_EXTENSIONS = ['.html', '.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.mp4'];
+
 fs.watch(__dirname, { recursive: true }, (eventType, filename) => {
-    if (filename && (filename.endsWith('.html') || filename.endsWith('.css') || filename.endsWith('.js'))) {
-        if (filename === 'server.js') return; // Avoid reload on server edit
-        
+    if (!filename) return;
+    
+    // Ignore git folder, node_modules, and the server script itself
+    if (filename.includes('.git') || filename.includes('node_modules') || filename === 'server.js') {
+        return;
+    }
+    
+    const ext = path.extname(filename).toLowerCase();
+    if (WATCHED_EXTENSIONS.includes(ext)) {
         console.log(`[Watcher] File changed: ${filename}`);
+        
+        // 1. Live Reload Broadcast
         clearTimeout(reloadTimeout);
         reloadTimeout = setTimeout(() => {
             console.log(`[Watcher] Broadcasting reload to ${clients.size} clients...`);
@@ -58,6 +112,9 @@ fs.watch(__dirname, { recursive: true }, (eventType, filename) => {
                 }
             });
         }, 100);
+
+        // 2. Auto-Git Trigger
+        triggerAutoGitPush(filename);
     }
 });
 
