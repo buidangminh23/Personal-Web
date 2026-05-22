@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bùi Đăng Minh | Data Science Student & Web Developer</title>
+    <!-- SEO Meta Tags - Auto Reload Enabled -->
+    <meta name="description" content="Bùi Đăng Minh - Sinh viên Khoa học dữ liệu Swinburne & Web Developer. Xem các dự án công nghệ, kỹ năng lập trình, mô hình phân tích dữ liệu và thông tin liên hệ của tôi.">
+    <meta name="keywords" content="Bùi Đăng Minh, Swinburne University, 105716425, Portfolio, Web Developer, Data Science Student, Khoa học dữ liệu, Thiết kế web">
+    <meta name="author" content="Bùi Đăng Minh">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Bùi Đăng Minh | Data Science Student & Web Developer">
+    <meta property="og:description" content="Khám phá các sản phẩm công nghệ ấn tượng, mô hình phân tích dữ liệu, kỹ năng lập trình và hành trình học tập của Bùi Đăng Minh.">
+    <meta property="og:image" content="assets/avatar.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme"> <!-- Dark mode by default for premium tech feel -->
+    <!-- Custom Glowing Background Gradients -->
+    <div class="glow-bg-container">
+        <div class="glow-circle glow-circle-1"></div>
+        <div class="glow-circle glow-circle-2"></div>
+        <div class="glow-circle glow-circle-3"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar-header" id="navbar">
+        <div class="container navbar-container">
+            <a href="#home" class="logo">
+                <img src="assets/logo.jpg" alt="Minh Stark Logo" class="logo-img">
+                <span class="logo-text"><span class="logo-accent">Minh</span>Stark</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-i18n="nav-home">Trang chủ</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="nav-about">Giới thiệu</a></li>
+                    <li><a href="#skills" class="nav-link" data-i18n="nav-skills">Kỹ năng</a></li>
+                    <li><a href="#projects" class="nav-link" data-i18n="nav-projects">Dự án</a></li>
+                    <li><a href="#experience" class="nav-link" data-i18n="nav-experience">Kinh nghiệm</a></li>
+                    <li><a href="#activities" class="nav-link" data-i18n="nav-activities">Hoạt động</a></li>
+                    <li><a href="#achievements" class="nav-link" data-i18n="nav-achievements">Thành tích</a></li>
+                    <li><a href="#contact" class="nav-link" data-i18n="nav-contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Language Switcher -->
+                <button class="lang-toggle-btn" id="lang-toggle" aria-label="Toggle language" aria-expanded="false">
+                    <span class="lang-label" id="lang-label">EN</span>
+                </button>
+
+                <!-- Theme Switcher -->
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light/dark theme" aria-expanded="false">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                
+                <!-- Hamburger Menu for Mobile -->
+                <button class="hamburger" id="hamburger-menu" aria-label="Open mobile menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-subtitle" data-i18n="hero-subtitle">XIN CHÀO, TÔI LÀ</span>
+                    <h1 class="hero-title" data-i18n="hero-name">Bùi Đăng Minh</h1>
+                    <h2 class="hero-typing-container">
+                        <span data-i18n="hero-iam">Tôi là</span> <span class="typing-text" id="typing-text"></span><span class="typed-cursor">|</span>
+                    </h2>
+                    <p class="hero-description" data-i18n="hero-description">
+                        Một sinh viên Khoa học dữ liệu tại Swinburne University đam mê kiến tạo những sản phẩm công nghệ hiện đại, tối ưu hiệu năng và mang tính thẩm mỹ cao. Tôi tập trung vào việc phát triển ứng dụng web và thiết kế giao diện sáng tạo.
+                    </p>
+                    <div class="hero-actions">
+                        <div class="hero-character-wrapper">
+                            <canvas id="character-canvas" width="180" height="320"></canvas>
+                        </div>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary glow-btn" id="hero-btn-projects">
+                                <span data-i18n="hero-view-projects">Xem Dự Án</span> <i data-lucide="arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-outline" id="hero-btn-contact">
+                                <span data-i18n="hero-contact-me">Liên Hệ</span> <i data-lucide="mail"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="about-subtitle">THÔNG TIN</span>
+                    <h2 class="title" data-i18n="about-title">Về Bản Thân</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-info">
+                        <h3 data-i18n="about-heading">Lập trình không chỉ là code, đó là nghệ thuật giải quyết vấn đề</h3>
+                        <p data-i18n="about-p1">Tôi hiện là sinh viên chuyên ngành Khoa học dữ liệu tại Swinburne University. Bắt đầu tiếp cận lập trình từ sớm, tôi luôn mong muốn tự tay tạo dựng những ứng dụng thiết thực, có tính ứng dụng cao và tối ưu trải nghiệm.</p>
+                        <p data-i18n="about-p2">Với tư cách là một kỹ sư phần mềm, tôi luôn hướng tới việc xây dựng các kiến trúc hệ thống bền vững, tối ưu hóa tốc độ tải trang và mang đến thiết kế giao diện chuẩn mực, tương thích trên mọi nền tảng di động và máy tính.</p>
+                        
+                        <div class="personal-details">
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-fullname-label">Họ và tên:</span>
+                                <span class="detail-value">Bùi Đăng Minh</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-gender-label">Giới tính:</span>
+                                <span class="detail-value" data-i18n="about-gender-val">Nam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-dob-label">Ngày sinh:</span>
+                                <span class="detail-value">02/03/2006</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-school-label">Trường:</span>
+                                <span class="detail-value">Swinburne University</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-location-label">Vị trí:</span>
+                                <span class="detail-value" data-i18n="about-location-val">Hà Nội, Việt Nam</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-email-label">Email cá nhân:</span>
+                                <span class="detail-value"><a href="mailto:buidangminh.lh@gmail.com" class="detail-link">buidangminh.lh@gmail.com</a></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-student-email-label">Email sinh viên:</span>
+                                <span class="detail-value"><a href="mailto:105716425@student.swin.edu.au" class="detail-link">105716425@student.swin.edu.au</a></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-phone-label">Điện thoại / Zalo:</span>
+                                <span class="detail-value"><a href="tel:0384741350" class="detail-link">0384741350</a></span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-i18n="about-status-label">Trạng thái:</span>
+                                <span class="detail-value text-accent-green" data-i18n="about-status-val">Sẵn sàng hợp tác (Freelance/Full-time)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon-wrapper"><i data-lucide="award" class="stat-icon"></i></div>
+                            <span class="stat-number">IELTS 5.5</span>
+                            <span class="stat-label" data-i18n="about-stat-ielts">Chứng Chỉ Anh Ngữ</span>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon-wrapper"><i data-lucide="file-check" class="stat-icon"></i></div>
+                            <span class="stat-number">MOS</span>
+                            <span class="stat-label" data-i18n="about-stat-mos">Tin Học Văn Phòng</span>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon-wrapper"><i data-lucide="code-2" class="stat-icon"></i></div>
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label" data-i18n="about-stat-projects">Dự Án Hoàn Thành</span>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon-wrapper"><i data-lucide="calendar" class="stat-icon"></i></div>
+                            <span class="stat-number">2006</span>
+                            <span class="stat-label" data-i18n="about-stat-yob">Năm Sinh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="skills-subtitle">NĂNG LỰC</span>
+                    <h2 class="title" data-i18n="skills-title">Kỹ Năng Lập Trình</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="skills-tabs" role="tablist" aria-label="Programming Skills Tabs">
+                    <button class="tab-btn active" id="tab-frontend" role="tab" aria-selected="true" aria-expanded="true" tabindex="0" aria-controls="frontend-skills" data-tab="frontend">Frontend</button>
+                    <button class="tab-btn" id="tab-backend" role="tab" aria-selected="false" aria-expanded="false" tabindex="0" aria-controls="backend-skills" data-tab="backend">Backend & DB</button>
+                    <button class="tab-btn" id="tab-tools" role="tab" aria-selected="false" aria-expanded="false" tabindex="0" aria-controls="tools-skills" data-tab="tools" data-i18n="skills-tab-tools">Công cụ & Khác</button>
+                </div>
+                
+                <div class="skills-content">
+                    <!-- Frontend Tab -->
+                    <div class="tab-content active" id="frontend-skills" role="tabpanel" aria-labelledby="tab-frontend">
+                        <div class="skills-grid">
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="chrome" class="skill-icon text-orange"></i>
+                                        <span class="skill-name">HTML5 / CSS3 / JavaScript (ES6+)</span>
+                                    </div>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="atom" class="skill-icon text-cyan"></i>
+                                        <span class="skill-name">ReactJS / Next.js</span>
+                                    </div>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="layers" class="skill-icon text-blue"></i>
+                                        <span class="skill-name">TailwindCSS & CSS Frameworks</span>
+                                    </div>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="smartphone" class="skill-icon text-pink"></i>
+                                        <span class="skill-name" data-i18n="skill-responsive">Responsive & UI/UX Design</span>
+                                    </div>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Backend Tab -->
+                    <div class="tab-content" id="backend-skills" role="tabpanel" aria-labelledby="tab-backend" aria-hidden="true">
+                        <div class="skills-grid">
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="server" class="skill-icon text-green"></i>
+                                        <span class="skill-name">Node.js / Express</span>
+                                    </div>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="database" class="skill-icon text-emerald"></i>
+                                        <span class="skill-name">MongoDB / Mongoose</span>
+                                    </div>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="table" class="skill-icon text-purple"></i>
+                                        <span class="skill-name">SQL / PostgreSQL / MySQL</span>
+                                    </div>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="key" class="skill-icon text-yellow"></i>
+                                        <span class="skill-name">Restful API / JWT / OAuth</span>
+                                    </div>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools Tab -->
+                    <div class="tab-content" id="tools-skills" role="tabpanel" aria-labelledby="tab-tools" aria-hidden="true">
+                        <div class="skills-grid">
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="git-branch" class="skill-icon text-red"></i>
+                                        <span class="skill-name">Git & GitHub Version Control</span>
+                                    </div>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="box" class="skill-icon text-blue"></i>
+                                        <span class="skill-name">Docker Containers</span>
+                                    </div>
+                                    <span class="skill-percentage">70%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="figma" class="skill-icon text-orange-pink"></i>
+                                        <span class="skill-name">Figma Prototyping</span>
+                                    </div>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-card glass-card">
+                                <div class="skill-info">
+                                    <div class="skill-name-wrapper">
+                                        <i data-lucide="cpu" class="skill-icon text-indigo"></i>
+                                        <span class="skill-name" data-i18n="skill-ai">AI Prompt Engineering / LLMs</span>
+                                    </div>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="projects-subtitle">SẢN PHẨM</span>
+                    <h2 class="title" data-i18n="projects-title">Dự Án Nổi Bật</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="project-filters" role="group" aria-label="Project category filters">
+                    <button class="filter-btn active" aria-pressed="true" data-filter="all" data-i18n="projects-filter-all">Tất cả</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="web">Web App</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="design">UI/UX Design</button>
+                    <button class="filter-btn" aria-pressed="false" data-filter="system" data-i18n="projects-filter-system">Hệ thống</button>
+                </div>
+                
+                <!-- Project Grid -->
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card glass-card" data-category="web" data-project-id="aegis-dashboard">
+                        <div class="project-img-wrapper">
+                            <img src="assets/project_dashboard.png" alt="Aegis Cyber Dashboard" class="project-img">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link-icon" aria-label="Github link"><i data-lucide="github"></i></a>
+                                    <a href="#" class="project-link-icon" aria-label="Live preview"><i data-lucide="external-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Web App</span>
+                            <h3 class="project-title" data-i18n="proj1-title">Aegis Cyber Dashboard</h3>
+                            <p class="project-description" data-i18n="proj1-desc">Hệ thống giám sát bảo mật thời gian thực với biểu đồ trực quan động và cảnh báo an ninh thông minh.</p>
+                            <div class="project-tech-stack">
+                                <span>React</span>
+                                <span>Next.js</span>
+                                <span>TailwindCSS</span>
+                                <span>Socket.io</span>
+                            </div>
+                            <div class="project-detail-trigger">
+                                <button class="btn-detail-link" data-project-id="aegis-dashboard">
+                                    <span data-i18n="view-details">Xem chi tiết</span> <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card glass-card" data-category="design" data-project-id="stark-os">
+                        <div class="project-img-wrapper">
+                            <img src="assets/project_os.png" alt="Stark OS Portfolio" class="project-img">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link-icon" aria-label="Github link"><i data-lucide="github"></i></a>
+                                    <a href="#" class="project-link-icon" aria-label="Live preview"><i data-lucide="external-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">UI/UX Design</span>
+                            <h3 class="project-title" data-i18n="proj2-title">Stark OS Interface</h3>
+                            <p class="project-description" data-i18n="proj2-desc">Giao diện mô phỏng hệ điều hành holographic mang hơi hướng Iron Man, tương tác bằng cử chỉ ảo.</p>
+                            <div class="project-tech-stack">
+                                <span>Figma</span>
+                                <span>Three.js</span>
+                                <span>Web Audio API</span>
+                            </div>
+                            <div class="project-detail-trigger">
+                                <button class="btn-detail-link" data-project-id="stark-os">
+                                    <span data-i18n="view-details">Xem chi tiết</span> <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card glass-card" data-category="web" data-project-id="nexus-market">
+                        <div class="project-img-wrapper">
+                            <img src="assets/project_ecommerce.png" alt="Nexus E-Commerce" class="project-img">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link-icon" aria-label="Github link"><i data-lucide="github"></i></a>
+                                    <a href="#" class="project-link-icon" aria-label="Live preview"><i data-lucide="external-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Web App</span>
+                            <h3 class="project-title" data-i18n="proj3-title">Nexus Glassmorphic Market</h3>
+                            <p class="project-description" data-i18n="proj3-desc">Nền tảng thương mại điện tử giao diện kính mờ sang trọng, thanh toán Stripe mượt mà và hoạt ảnh giỏ hàng 3D.</p>
+                            <div class="project-tech-stack">
+                                <span>Node.js</span>
+                                <span>PostgreSQL</span>
+                                <span>Redux</span>
+                                <span>Stripe</span>
+                            </div>
+                            <div class="project-detail-trigger">
+                                <button class="btn-detail-link" data-project-id="nexus-market">
+                                    <span data-i18n="view-details">Xem chi tiết</span> <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="experience-subtitle">LỊCH SỬ</span>
+                    <h2 class="title" data-i18n="experience-title">Hành Trình Sự Nghiệp</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date" data-i18n="exp1-date">2024 - HIỆN TẠI</div>
+                        <div class="timeline-content glass-card">
+                            <h3 class="timeline-title" data-i18n="exp1-title">Sinh viên Khoa học dữ liệu</h3>
+                            <h4 class="timeline-company">Swinburne University</h4>
+                            <p class="timeline-text" data-i18n="exp1-desc">Học tập và nghiên cứu chuyên sâu về khoa học dữ liệu, phân tích dữ liệu và lập trình. Xây dựng các mô hình dữ liệu và dự án cá nhân chất lượng cao.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date" data-i18n="exp2-date">2021 - 2024</div>
+                        <div class="timeline-content glass-card">
+                            <h3 class="timeline-title" data-i18n="exp2-title">Học sinh & Tự học lập trình</h3>
+                            <h4 class="timeline-company" data-i18n="exp2-company">Trường Trung học Phổ thông</h4>
+                            <p class="timeline-text" data-i18n="exp2-desc">Bắt đầu hành trình công nghệ. Tự học HTML, CSS, JavaScript cơ bản, thiết kế giao diện tĩnh và phát triển tư duy thuật toán.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date" data-i18n="exp3-date">ĐỊNH HƯỚNG TƯƠNG LAI</div>
+                        <div class="timeline-content glass-card">
+                            <h3 class="timeline-title" data-i18n="exp3-title">Full-Stack Developer chuyên nghiệp</h3>
+                            <h4 class="timeline-company" data-i18n="exp3-company">Stark Tech / Freelance</h4>
+                            <p class="timeline-text" data-i18n="exp3-desc">Không ngừng trau dồi các framework hiện đại (React, Next.js, Node.js), học hỏi thêm về DevOps và kiến trúc phần mềm để kiến tạo những hệ thống lớn chất lượng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section id="activities" class="activities-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="activities-subtitle">TRẢI NGHIỆM</span>
+                    <h2 class="title" data-i18n="activities-title">Hoạt Động Thực Tế</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="activities-grid">
+                    <!-- Activity 1 -->
+                    <div class="activity-card glass-card">
+                        <div class="activity-img-wrapper">
+                            <img src="assets/activity_hoaphat.jpg" alt="Hoa Phat Field Trip" class="activity-img">
+                            <div class="activity-date">2024</div>
+                        </div>
+                        <div class="activity-info">
+                            <span class="activity-tag badge-cyan" data-i18n="act1-tag">Kiến tập</span>
+                            <h3 class="activity-title" data-i18n="act1-title">Kiến tập thực tế tại Hòa Phát Hải Dương</h3>
+                            <p class="activity-desc" data-i18n="act1-desc">Chuyến tham quan thực tế tìm hiểu quy trình vận hành và hệ thống quản lý công nghiệp quy mô lớn cùng tập thể sinh viên Swinburne.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity 2 -->
+                    <div class="activity-card glass-card">
+                        <div class="activity-img-wrapper">
+                            <img src="assets/activity_port.jpg" alt="Port Logistics Visit" class="activity-img">
+                            <div class="activity-date">2024</div>
+                        </div>
+                        <div class="activity-info">
+                            <span class="activity-tag badge-orange" data-i18n="act2-tag">Thực tế</span>
+                            <h3 class="activity-title" data-i18n="act2-title">Khảo sát hệ thống cảng & logistics</h3>
+                            <p class="activity-desc" data-i18n="act2-desc">Khảo sát thực địa hệ thống hạ tầng cảng biển, cần cẩu container siêu tải trọng và quy trình xếp dỡ hàng hóa logistics.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity 3 -->
+                    <div class="activity-card glass-card">
+                        <div class="activity-img-wrapper">
+                            <img src="assets/activity_koi.jpg" alt="Swinburne Extracurricular" class="activity-img">
+                            <div class="activity-date">2024</div>
+                        </div>
+                        <div class="activity-info">
+                            <span class="activity-tag badge-pink" data-i18n="act3-tag">Ngoại khóa</span>
+                            <h3 class="activity-title" data-i18n="act3-title">Hoạt động ngoại khóa & kết nối</h3>
+                            <p class="activity-desc" data-i18n="act3-desc">Tham gia hoạt động giao lưu, chăm sóc cảnh quan khuôn viên trường và tăng cường sự gắn kết giữa sinh viên và giảng viên.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="achievements-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="achievements-subtitle">CHỨNG NHẬN</span>
+                    <h2 class="title" data-i18n="achievements-title">Thành Tích & Học Thuật</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="achievements-content">
+                    <!-- Academic List (Left side) -->
+                    <div class="achievements-list">
+                        <!-- Achievement 1 -->
+                        <div class="achievement-item glass-card">
+                            <div class="achievement-icon-wrapper">
+                                <i data-lucide="award" class="achievement-icon text-red" aria-hidden="true"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3 class="achievement-name" data-i18n="ach1-title">Học bổng Sinh viên Xuất sắc Swinburne</h3>
+                                <p class="achievement-desc" data-i18n="ach1-desc">Đạt học bổng đầu vào xuất sắc dựa trên thành tích học tập và năng lực hoạt động ngoại khóa năng nổ.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Achievement 2 -->
+                        <div class="achievement-item glass-card">
+                            <div class="achievement-icon-wrapper">
+                                <i data-lucide="trophy" class="achievement-icon text-orange" aria-hidden="true"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3 class="achievement-name" data-i18n="ach2-title">GPA Học thuật Xuất sắc</h3>
+                                <p class="achievement-desc" data-i18n="ach2-desc">Duy trì kết quả học tập xuất sắc trong các môn chuyên ngành lập trình, cấu trúc dữ liệu và giải thuật.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Achievement 3 -->
+                        <div class="achievement-item glass-card">
+                            <div class="achievement-icon-wrapper">
+                                <i data-lucide="shield-check" class="achievement-icon text-cyan" aria-hidden="true"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3 class="achievement-name" data-i18n="ach3-title">Chứng chỉ Chuyên môn Công nghệ</h3>
+                                <p class="achievement-desc" data-i18n="ach3-desc">Hoàn thành xuất sắc các khóa học chuyên sâu về Web Development, UI/UX Design và AI Prompting từ các nền tảng quốc tế.</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievement 4 -->
+                        <div class="achievement-item glass-card">
+                            <div class="achievement-icon-wrapper">
+                                <i data-lucide="languages" class="achievement-icon text-pink" aria-hidden="true"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3 class="achievement-name" data-i18n="ach4-title">Chứng chỉ Tiếng Anh IELTS 5.5</h3>
+                                <p class="achievement-desc" data-i18n="ach4-desc">Chứng nhận năng lực sử dụng Tiếng Anh chuẩn quốc tế, hỗ trợ đắc lực trong môi trường học tập toàn cầu tại Swinburne.</p>
+                            </div>
+                        </div>
+
+                        <!-- Achievement 5 -->
+                        <div class="achievement-item glass-card">
+                            <div class="achievement-icon-wrapper">
+                                <i data-lucide="scroll" class="achievement-icon text-purple" aria-hidden="true"></i>
+                            </div>
+                            <div class="achievement-details">
+                                <h3 class="achievement-name" data-i18n="ach5-title">Chứng chỉ Tin học Văn phòng Quốc tế (MOS)</h3>
+                                <p class="achievement-desc" data-i18n="ach5-desc">Đạt danh hiệu MOS Associate sau khi xuất sắc hoàn thành 3 chứng chỉ thành phần: Word, Excel và PowerPoint 2019.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Highlight Card (Right side with carousel of 2 images) -->
+                    <div class="achievement-highlight glass-card achievement-carousel">
+                        <div class="carousel-track">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide active">
+                                <div class="highlight-img-wrapper">
+                                    <img src="assets/achieve_swinburne.jpg" alt="Swinburne Scholarship Ceremony" class="highlight-img">
+                                    <div class="highlight-overlay">
+                                        <span class="highlight-tag" data-i18n="ach-hl-tag1">Học bổng</span>
+                                    </div>
+                                </div>
+                                <div class="highlight-info">
+                                    <h3 class="highlight-title" data-i18n="ach-hl-title1">Lễ trao giải Học bổng & Thiết bị học tập Swinburne</h3>
+                                    <p class="highlight-desc" data-i18n="ach-hl-desc1">Vinh dự nhận học bổng đầu vào xuất sắc và trang thiết bị hỗ trợ học tập chuyên sâu từ đại diện nhà trường Swinburne.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide">
+                                <div class="highlight-img-wrapper">
+                                    <img src="assets/achieve_global_citizen.jpg" alt="Best Unit Performance in Global Citizen" class="highlight-img">
+                                    <div class="highlight-overlay">
+                                        <span class="highlight-tag" data-i18n="ach-hl-tag2">Học thuật</span>
+                                    </div>
+                                </div>
+                                <div class="highlight-info">
+                                    <h3 class="highlight-title" data-i18n="ach-hl-title2">Chứng nhận Sinh viên xuất sắc nhất môn học</h3>
+                                    <p class="highlight-desc" data-i18n="ach-hl-desc2">Đạt danh hiệu "Best Unit Performance in Global Citizen (EGC6)" dành cho sinh viên có điểm số xuất sắc nhất môn học tại Swinburne Việt Nam.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Carousel dots indicators -->
+                        <div class="carousel-indicators">
+                            <button class="indicator-dot active" aria-label="Slide 1" data-slide="0"></button>
+                            <button class="indicator-dot" aria-label="Slide 2" data-slide="1"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="contact-subtitle">KẾT NỐI</span>
+                    <h2 class="title" data-i18n="contact-title">Liên Hệ Với Tôi</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h3 data-i18n="contact-heading">Hãy thảo luận về dự án tiếp theo của bạn!</h3>
+                        <p class="contact-intro" data-i18n="contact-intro">Tôi luôn sẵn sàng đón nhận những cơ hội hợp tác mới, các dự án freelance thú vị hoặc các cuộc thảo luận kỹ thuật. Hãy gửi tin nhắn cho tôi bất cứ lúc nào!</p>
+                        
+                        <div class="contact-methods">
+                            <!-- Gmail Card -->
+                            <div class="contact-method-card glass-card">
+                                <div class="contact-method-icon">
+                                    <svg role="img" viewBox="0 0 24 24" class="brand-icon gmail-icon" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; fill: currentColor; transition: color 0.3s ease;" aria-hidden="true">
+                                        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <span data-i18n="contact-method-email">Email Cá Nhân</span>
+                                    <a href="mailto:buidangminh.lh@gmail.com">buidangminh.lh@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Student Email Card -->
+                            <div class="contact-method-card glass-card">
+                                <div class="contact-method-icon"><i data-lucide="graduation-cap"></i></div>
+                                <div class="contact-method-details">
+                                    <span data-i18n="contact-method-student-email">Email Sinh Viên</span>
+                                    <a href="mailto:105716425@student.swin.edu.au">105716425@student.swin.edu.au</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone Card -->
+                            <div class="contact-method-card glass-card">
+                                <div class="contact-method-icon"><i data-lucide="phone"></i></div>
+                                <div class="contact-method-details">
+                                    <span data-i18n="contact-method-phone">Số Điện Thoại</span>
+                                    <a href="tel:0384741350">0384741350</a>
+                                </div>
+                            </div>
+
+                            <!-- Zalo Card -->
+                            <div class="contact-method-card glass-card">
+                                <div class="contact-method-icon">
+                                    <svg role="img" viewBox="0 0 24 24" class="brand-icon zalo-icon" xmlns="http://www.w3.org/2000/svg" style="width: 22px; height: 22px; fill: currentColor; transition: color 0.3s ease;" aria-hidden="true">
+                                        <path d="M12.49 10.2722v-.4496h1.3467v6.3218h-.7704a.576.576 0 01-.5763-.5729l-.0006.0005a3.273 3.273 0 01-1.9372.6321c-1.8138 0-3.2844-1.4697-3.2844-3.2823 0-1.8125 1.4706-3.2822 3.2844-3.2822a3.273 3.273 0 011.9372.6321l.0006.0005zM6.9188 7.7896v.205c0 .3823-.051.6944-.2995 1.0605l-.03.0343c-.0542.0615-.1815.206-.2421.2843L2.024 14.8h4.8948v.7682a.5764.5764 0 01-.5767.5761H0v-.3622c0-.4436.1102-.6414.2495-.8476L4.8582 9.23H.1922V7.7896h6.7266zm8.5513 8.3548a.4805.4805 0 01-.4803-.4798v-7.875h1.4416v8.3548H15.47zM20.6934 9.6C22.52 9.6 24 11.0807 24 12.9044c0 1.8252-1.4801 3.306-3.3066 3.306-1.8264 0-3.3066-1.4808-3.3066-3.306 0-1.8237 1.4802-3.3044 3.3066-3.3044zm-10.1412 5.253c1.0675 0 1.9324-.8645 1.9324-1.9312 0-1.065-.865-1.9295-1.9324-1.9295s-1.9324.8644-1.9324 1.9295c0 1.0667.865 1.9312 1.9324 1.9312zm10.1412-.0033c1.0737 0 1.945-.8707 1.945-1.9453 0-1.073-.8713-1.9436-1.945-1.9436-1.0753 0-1.945.8706-1.945 1.9436 0 1.0746.8697 1.9453 1.945 1.9453z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <span data-i18n="contact-method-zalo">Zalo</span>
+                                    <a href="https://zalo.me/0384741350" target="_blank" rel="noopener noreferrer">0384741350</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Location Card -->
+                            <div class="contact-method-card glass-card">
+                                <div class="contact-method-icon"><i data-lucide="map-pin"></i></div>
+                                <div class="contact-method-details">
+                                    <span data-i18n="contact-method-location">Địa điểm</span>
+                                    <span data-i18n="about-location-val">Hà Nội, Việt Nam</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links-container">
+                            <a href="#" class="social-icon-link" aria-label="GitHub"><i data-lucide="github"></i></a>
+                            <a href="#" class="social-icon-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                            <a href="#" class="social-icon-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                            <a href="#" class="social-icon-link" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container glass-card">
+                        <form id="contact-form" autocomplete="off">
+                            <div class="form-group">
+                                <label for="form-name" class="form-label" data-i18n="form-label-name">Họ và tên</label>
+                                <input type="text" id="form-name" name="name" class="form-input" placeholder="Nguyễn Văn A" data-i18n-placeholder="form-placeholder-name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-email" class="form-label" data-i18n="form-label-email">Địa chỉ Email</label>
+                                <input type="email" id="form-email" name="email" class="form-input" placeholder="name@gmail.com" data-i18n-placeholder="form-placeholder-email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-message" class="form-label" data-i18n="form-label-message">Lời nhắn</label>
+                                <textarea id="form-message" name="message" class="form-input form-textarea" placeholder="Nội dung dự án hoặc công việc bạn muốn thảo luận..." data-i18n-placeholder="form-placeholder-message" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block glow-btn" id="submit-btn">
+                                <span data-i18n="form-submit">Gửi tin nhắn</span> <i data-lucide="send"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p class="copyright" data-i18n="footer-copyright">&copy; 2026 Bùi Đăng Minh. Tất cả quyền được bảo lưu.</p>
+            <p class="footer-credit"><span data-i18n="footer-designed-by">Thiết kế bởi</span> <a href="#" class="footer-link">Bùi Đăng Minh</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+
+    <!-- Project Details Fullscreen View (SPA Overlay) -->
+    <div class="project-details-view" id="project-details-view" aria-hidden="true" role="dialog">
+        <div class="container project-details-container">
+            <header class="details-header">
+                <button class="btn-back" id="btn-details-back" aria-label="Quay lại danh mục">
+                    <i data-lucide="arrow-left"></i> <span data-i18n="back-to-portfolio">Quay lại</span>
+                </button>
+                <h2 class="details-nav-title" data-i18n="project-details-title">Chi Tiết Dự Án</h2>
+                <div class="details-header-placeholder"></div> <!-- Cân bằng layout -->
+            </header>
+            
+            <div class="details-content-grid" id="details-content-dyn">
+                <!-- Nội dung được sinh tự động bằng JS -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =============================================
+         FLOATING SOCIAL CONTACT WIDGET
+         ============================================= -->
+    <div class="social-float-widget" id="social-float-widget" aria-label="Kênh liên hệ">
+        <!-- Toggle Button -->
+        <button class="social-float-toggle" id="social-float-toggle" aria-expanded="false" aria-controls="social-float-list" aria-label="Mở/đóng kênh liên hệ">
+            <!-- Phone icon (open state) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-open"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.11 6.11l.83-.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <!-- X icon (close state) -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon-close"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <!-- Contact Items List -->
+        <ul class="social-float-list" id="social-float-list" role="list">
+
+            <!-- Messenger — Simple Icons official path -->
+            <li class="social-float-item" style="--item-delay: 0.05s">
+                <span class="social-float-label">Chat Messenger<small>(8h-21h)</small></span>
+                <a href="https://m.me/dangminh23" target="_blank" rel="noopener noreferrer"
+                   class="social-float-btn messenger" aria-label="Chat qua Facebook Messenger">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0C5.24 0 0 4.952 0 11.64c0 3.499 1.434 6.521 3.769 8.61a.96.96 0 0 1 .323.683l.065 2.135a.96.96 0 0 0 1.347.85l2.381-1.053a.96.96 0 0 1 .641-.046A13 13 0 0 0 12 23.28c6.76 0 12-4.952 12-11.64S18.76 0 12 0zm6.806 7.44c.522-.03.971.567.63 1.094l-4.178 6.457a.707.707 0 0 1-.977.208l-3.87-2.504a.44.44 0 0 0-.49.007l-4.363 3.01c-.637.438-1.415-.317-.995-.966l4.179-6.457a.706.706 0 0 1 .977-.21l3.87 2.505c.15.097.344.094.491-.007l4.362-3.008a.7.7 0 0 1 .364-.13z"/>
+                    </svg>
+                </a>
+            </li>
+
+            <!-- Zalo — Official Simple Icons path -->
+            <li class="social-float-item" style="--item-delay: 0.1s">
+                <span class="social-float-label">Chat Zalo<small>(8h-21h)</small></span>
+                <a href="https://zalo.me/0384741350" target="_blank" rel="noopener noreferrer"
+                   class="social-float-btn zalo" aria-label="Chat qua Zalo">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.49 10.2722v-.4496h1.3467v6.3218h-.7704a.576.576 0 01-.5763-.5729l-.0006.0005a3.273 3.273 0 01-1.9372.6321c-1.8138 0-3.2844-1.4697-3.2844-3.2823 0-1.8125 1.4706-3.2822 3.2844-3.2822a3.273 3.273 0 011.9372.6321l.0006.0005zM6.9188 7.7896v.205c0 .3823-.051.6944-.2995 1.0605l-.03.0343c-.0542.0615-.1815.206-.2421.2843L2.024 14.8h4.8948v.7682a.5764.5764 0 01-.5767.5761H0v-.3622c0-.4436.1102-.6414.2495-.8476L4.8582 9.23H.1922V7.7896h6.7266zm8.5513 8.3548a.4805.4805 0 01-.4803-.4798v-7.875h1.4416v8.3548H15.47zM20.6934 9.6C22.52 9.6 24 11.0807 24 12.9044c0 1.8252-1.4801 3.306-3.3066 3.306-1.8264 0-3.3066-1.4808-3.3066-3.306 0-1.8237 1.4802-3.3044 3.3066-3.3044zm-10.1412 5.253c1.0675 0 1.9324-.8645 1.9324-1.9312 0-1.065-.865-1.9295-1.9324-1.9295s-1.9324.8644-1.9324 1.9295c0 1.0667.865 1.9312 1.9324 1.9312zm10.1412-.0033c1.0737 0 1.945-.8707 1.945-1.9453 0-1.073-.8713-1.9436-1.945-1.9436-1.0753 0-1.945.8706-1.945 1.9436 0 1.0746.8697 1.9453 1.945 1.9453z"/>
+                    </svg>
+                </a>
+            </li>
+
+            <!-- Facebook — Clean centered 'f' icon -->
+            <li class="social-float-item" style="--item-delay: 0.15s">
+                <span class="social-float-label">Facebook</span>
+                <a href="https://web.facebook.com/dangminh23" target="_blank" rel="noopener noreferrer"
+                   class="social-float-btn facebook" aria-label="Trang Facebook">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
+                    </svg>
+                </a>
+            </li>
+
+            <!-- Instagram — Simple Icons official path -->
+            <li class="social-float-item" style="--item-delay: 0.2s">
+                <span class="social-float-label">Instagram</span>
+                <a href="https://www.instagram.com/buidangminh_06/" target="_blank" rel="noopener noreferrer"
+                   class="social-float-btn instagram" aria-label="Trang Instagram">
+                    <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
+                    </svg>
+                </a>
+            </li>
+
+            <!-- Telegram — Simple Icons official path -->
+            <li class="social-float-item" style="--item-delay: 0.25s">
+                <span class="social-float-label">Telegram</span>
+                <a href="https://t.me/Gemeraleakschannel" target="_blank" rel="noopener noreferrer"
+                   class="social-float-btn telegram" aria-label="Kênh Telegram">
+                    <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                </a>
+            </li>
+
+            <!-- Phone Call -->
+            <li class="social-float-item" style="--item-delay: 0.3s">
+                <span class="social-float-label">0384 741 350<small>(8h-21h)</small></span>
+                <a href="tel:0384741350" class="social-float-btn phone" aria-label="Gọi điện thoại">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.11 6.11l.83-.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
