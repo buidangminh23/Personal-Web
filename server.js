@@ -43,6 +43,19 @@ const clients = new Set();
 
 // Auto Git Push on Changes
 let gitPushTimeout;
+function triggerVercelDeploy() {
+    console.log(`[Vercel] Deploying latest changes to production...`);
+    exec('npx vercel deploy --prod --yes --project personal-web', { cwd: __dirname, maxBuffer: 1024 * 1024 * 10 }, (err, stdout, stderr) => {
+        if (err) {
+            console.error(`[Vercel] Deploy failed: ${err.message}`);
+            if (stderr) console.error(stderr);
+            return;
+        }
+        console.log(`[Vercel] Production deploy completed.`);
+        if (stdout) console.log(stdout);
+    });
+}
+
 function triggerAutoGitPush(filename) {
     clearTimeout(gitPushTimeout);
     gitPushTimeout = setTimeout(() => {
@@ -77,6 +90,7 @@ function triggerAutoGitPush(filename) {
                             console.error(`[Auto-Git] Git push failed: ${err.message}`);
                         } else {
                             console.log(`✨ [Auto-Git] Successfully pushed changes to GitHub!`);
+                            triggerVercelDeploy();
                         }
                     });
                 });
