@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { URL } = require('url');
 const { exec } = require('child_process');
 
 const SECURITY_HEADERS = {
@@ -146,12 +147,14 @@ fs.watch(__dirname, { recursive: true }, (eventType, filename) => {
 
 const server = http.createServer((req, res) => {
     console.log(`${req.method} ${req.url}`);
+    const requestUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    const pathname = decodeURIComponent(requestUrl.pathname);
 
     Object.entries(SECURITY_HEADERS).forEach(([key, value]) => res.setHeader(key, value));
     res.removeHeader('X-Powered-By');
     res.setHeader('Server', '');
 
-    if (req.url === '/events') {
+    if (pathname === '/events') {
         res.writeHead(200, {
             'Content-Type': 'text/event-stream',
             'Cache-Control': 'no-cache',
@@ -167,7 +170,7 @@ const server = http.createServer((req, res) => {
     }
     
     // Resolve file path
-    let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+    let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
     
     // Prevent directory traversal
     if (!filePath.startsWith(__dirname)) {
