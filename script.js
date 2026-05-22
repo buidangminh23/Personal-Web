@@ -1057,7 +1057,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const g = pixels[i + 1];
             const b = pixels[i + 2];
             const spread = Math.max(r, g, b) - Math.min(r, g, b);
-            if (r > 238 && g > 238 && b > 238 && spread < 18) {
+            if (r > 220 && g > 220 && b > 220 && spread < 45) {
                 pixels[i + 3] = 0;
             }
         }
