@@ -160,7 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
             "proj3-detail-f2": "Agent Quản lý công việc (Work Agent) hỗ trợ lập lịch trình, thiết lập mức độ ưu tiên, cập nhật tiến độ dự án và ghi nhận lịch sử công việc thông qua đối thoại trực tiếp bằng ngôn ngữ tự nhiên.",
             "proj3-detail-f3": "Agent Hỗ trợ học tập (Study Agent) hỗ trợ phân bổ thời gian học thông minh theo phiên Pomodoro, đo lường tiến độ tiếp thu kiến thức của từng môn học và tự động đưa ra các khuyến nghị tối ưu hóa lịch học.",
             "proj3-detail-f4": "Agent Tự động hóa (Automation Agent) quản lý và kích hoạt các kịch bản tự động hóa hệ thống (như gửi email, dọn dẹp file, cào dữ liệu), ghi chép chi tiết nhật ký thực thi để dễ dàng theo dõi lỗi.",
-            "proj3-detail-f5": "Tích hợp sâu Langflow (local engine), Gemini 2.0 Flash API, cơ chế tự động nạp hồ sơ cá nhân làm ngữ cảnh nền, cung cấp bộ công cụ Khoa học dữ liệu (Data Science Agent) xử lý file CSV và vẽ biểu đồ trực quan."
+            "proj3-detail-f5": "Tích hợp sâu Langflow (local engine), Gemini 2.0 Flash API, cơ chế tự động nạp hồ sơ cá nhân làm ngữ cảnh nền, cung cấp bộ công cụ Khoa học dữ liệu (Data Science Agent) xử lý file CSV và vẽ biểu đồ trực quan.",
+            "proj4-title": "Study Web — Swinburne Learning Space",
+            "proj4-desc": "Hệ thống quản lý học tập, lưu trữ tài liệu môn học Swinburne (IT, Business, Media) tích hợp lộ trình trực quan và đa ngôn ngữ.",
+            "proj4-detail-overview": "Study Web là một nền tảng quản lý tài liệu học tập và theo dõi lộ trình môn học chuyên biệt được thiết kế cho sinh viên Swinburne University. Website được xây dựng với cấu trúc hiện đại, tập trung vào giao diện tối giản nhưng cực kỳ tối ưu cho việc truy cập bài giảng, tài liệu PDF và theo dõi tiến trình học tập cá nhân. Dự án hỗ trợ cơ chế xác thực người dùng đầy đủ, phân loại tài liệu thông minh theo các khối ngành học IT, Business, Media, và cung cấp tính năng đa ngôn ngữ tức thì để phù hợp với môi trường học tập quốc tế.",
+            "proj4-detail-f1": "Hệ thống phân loại tài liệu và bài giảng khoa học theo các khối ngành đào tạo chính của Swinburne: Công nghệ thông tin (IT), Kinh tế (Business) và Truyền thông (Media).",
+            "proj4-detail-f2": "Lộ trình môn học (Learning Path) trực quan, cho phép sinh viên click xem chi tiết lộ trình học tập, tài liệu tham khảo và slide bài giảng của từng tuần cụ thể.",
+            "proj4-detail-f3": "Chức năng chuyển đổi ngôn ngữ (English/Vietnamese) tức thời trên toàn hệ thống giúp người dùng dễ dàng chuyển đổi môi trường học tập tùy theo nhu cầu.",
+            "proj4-detail-f4": "Hệ thống tài khoản người dùng tích hợp các luồng đăng ký, đăng nhập và bảo mật thông tin, sẵn sàng hỗ trợ cá nhân hóa lộ trình học cho từng sinh viên.",
+            "proj4-detail-f5": "Giao diện responsive mượt mà tối ưu hiển thị trên di động, cấu trúc HTML5 chuẩn SEO, cùng tốc độ tải trang ấn tượng nhờ triển khai trực tiếp trên nền tảng Vercel."
         },
         en: {
             "nav-home": "Home",
@@ -314,7 +322,15 @@ document.addEventListener('DOMContentLoaded', () => {
             "proj3-detail-f2": "Work Agent for task management, supporting schedule planning, priority setting, progress tracking, and history logging, completely managed through natural language conversations.",
             "proj3-detail-f3": "Study Agent providing intelligent study schedules using Pomodoro technique, tracking academic progress per subject, and suggesting personalized adjustments.",
             "proj3-detail-f4": "Automation Agent to configure and trigger custom background automation tasks (emailing, cleanups, scraping) with detailed run history logs for troubleshooting.",
-            "proj3-detail-f5": "Deep integration with Langflow (local engine), Gemini 2.0 Flash API, contextual user profiles, and a Data Science Agent capable of processing CSV data and rendering visualizations."
+            "proj3-detail-f5": "Deep integration with Langflow (local engine), Gemini 2.0 Flash API, contextual user profiles, and a Data Science Agent capable of processing CSV data and rendering visualizations.",
+            "proj4-title": "Study Web — Swinburne Learning Space",
+            "proj4-desc": "Swinburne study resource management system (IT, Business, Media) featuring interactive learning paths and bilingual support.",
+            "proj4-detail-overview": "Study Web is a dedicated academic resource management and learning path tracking platform designed for Swinburne University students. The website is engineered with a modern architecture, focusing on a minimalist interface optimized for accessing lectures, PDF slide decks, and tracking individual study milestones. It features robust user authentication, intelligent course categorization across IT, Business, and Media blocks, and instantaneous bilingual switching to fit the international university environment.",
+            "proj4-detail-f1": "Academic categorization organizing courses and study resources under core Swinburne departments: Information Technology (IT), Business, and Media.",
+            "proj4-detail-f2": "Interactive Learning Paths allowing students to easily explore weekly milestones, recommended readings, and lecture slides.",
+            "proj4-detail-f3": "Instantaneous bilingual translation system (English/Vietnamese) to smoothly toggle languages according to student preferences.",
+            "proj4-detail-f4": "User authentication flows for secure sign-up, login, and personalized tracking of study progress per student.",
+            "proj4-detail-f5": "Highly responsive interface optimized for mobile views, SEO-friendly HTML5 structure, and ultra-fast page speed hosted on Vercel."
         }
     };
 
@@ -832,7 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'personal-web': {
             id: 'personal-web',
             titleKey: 'proj1-title',
-            img: 'assets/project_personal_web.png',
+            img: 'assets/project_personal_web.svg',
             category: 'Web App',
             date: '05/2026',
             techs: ['HTML5', 'CSS3', 'JavaScript', 'Canvas API', 'Vercel'],
@@ -850,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'gemera-bot': {
             id: 'gemera-bot',
             titleKey: 'proj2-title',
-            img: 'assets/project_gemera.png',
+            img: 'assets/project_gemera.svg',
             category: 'Hệ thống',
             date: '01/2026',
             techs: ['Python', 'Telethon', 'Gemini AI', 'Claude AI', 'SQLite', 'orjson'],
@@ -868,7 +884,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'minhstark-os': {
             id: 'minhstark-os',
             titleKey: 'proj3-title',
-            img: 'assets/project_minhstark_os.png',
+            img: 'assets/project_minhstark_os.svg',
             category: 'Hệ thống',
             date: '03/2026',
             techs: ['Python', 'Flask', 'Gemini API', 'Langflow', 'SQLite'],
@@ -881,6 +897,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 'proj3-detail-f3',
                 'proj3-detail-f4',
                 'proj3-detail-f5'
+            ]
+        },
+        'study-web': {
+            id: 'study-web',
+            titleKey: 'proj4-title',
+            img: 'assets/project_study_web.png',
+            category: 'Web App',
+            date: '04/2026',
+            techs: ['HTML5', 'CSS3', 'JavaScript', 'Python', 'Flask', 'SQLite'],
+            demoLink: 'https://study-6gzfwwhf1-buidangminh23s-projects.vercel.app/',
+            githubLink: 'https://github.com/buidangminh23',
+            overviewKey: 'proj4-detail-overview',
+            featuresKeys: [
+                'proj4-detail-f1',
+                'proj4-detail-f2',
+                'proj4-detail-f3',
+                'proj4-detail-f4',
+                'proj4-detail-f5'
             ]
         }
     };
