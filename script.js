@@ -948,12 +948,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="sidebar-info-group">
                     <span class="sidebar-label" data-i18n="proj-meta-links">Liên kết</span>
                     <div class="sidebar-links">
-                        <a href="${project.demoLink}" class="sidebar-btn sidebar-btn-primary glow-btn">
+                        ${project.demoLink && project.demoLink !== '#' ? `<a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" class="sidebar-btn sidebar-btn-primary glow-btn">
                             <span data-i18n="proj-meta-demo">Trải nghiệm trực tiếp</span> <i data-lucide="external-link"></i>
-                        </a>
-                        <a href="${project.githubLink}" class="sidebar-btn sidebar-btn-outline">
-                            <span data-i18n="proj-meta-github">Xem mã nguồn</span> <i data-lucide="github"></i>
-                        </a>
+                        </a>` : ''}
                     </div>
                 </div>
             </div>
