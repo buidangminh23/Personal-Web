@@ -848,7 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'personal-web': {
             id: 'personal-web',
             titleKey: 'proj1-title',
-            img: 'assets/project_personal_web.svg',
+            img: 'assets/project_personal_web_cropped.png',
             category: 'Web App',
             date: '05/2026',
             techs: ['HTML5', 'CSS3', 'JavaScript', 'Canvas API', 'Vercel'],
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'gemera-bot': {
             id: 'gemera-bot',
             titleKey: 'proj2-title',
-            img: 'assets/project_gemera.svg',
+            img: 'assets/project_gemera.png',
             category: 'Hệ thống',
             date: '01/2026',
             techs: ['Python', 'Telethon', 'Gemini AI', 'Claude AI', 'SQLite', 'orjson'],
@@ -884,7 +884,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'minhstark-os': {
             id: 'minhstark-os',
             titleKey: 'proj3-title',
-            img: 'assets/project_minhstark_os.svg',
+            img: 'assets/project_minhstark_os.png',
             category: 'Hệ thống',
             date: '03/2026',
             techs: ['Python', 'Flask', 'Gemini API', 'Langflow', 'SQLite'],
