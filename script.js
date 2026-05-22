@@ -998,7 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const SEQUENCES = [
         { type: 'sprite', src: 'assets/spritesheet.png', cols: 14, frames: 181, width: 180, height: 320, fps: 30 },
         { type: 'video', src: 'assets/hero-sequence-2.mp4', backgroundTolerance: 58 },
-        { type: 'video', src: 'assets/hero-sequence-3.mp4', backgroundTolerance: 82 }
+        { type: 'video', src: 'assets/hero-sequence-3.mp4', backgroundTolerance: 82, fit: 'cover' }
     ];
 
     const assets = SEQUENCES.map((sequence, index) => {
@@ -1024,9 +1024,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastTime = 0;
     let started = false;
 
-    function drawSource(source, sourceWidth, sourceHeight) {
+    function drawSource(source, sourceWidth, sourceHeight, fit = 'contain') {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const scale = Math.min(canvas.width / sourceWidth, canvas.height / sourceHeight);
+        const scale = fit === 'cover'
+            ? Math.max(canvas.width / sourceWidth, canvas.height / sourceHeight)
+            : Math.min(canvas.width / sourceWidth, canvas.height / sourceHeight);
         const dw = sourceWidth * scale;
         const dh = sourceHeight * scale;
         const dx = (canvas.width - dw) / 2;
@@ -1089,7 +1091,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drawVideo(sequence, video) {
         if (video.readyState < 2 || !video.videoWidth || !video.videoHeight) return;
-        drawSource(video, video.videoWidth, video.videoHeight);
+        drawSource(video, video.videoWidth, video.videoHeight, sequence.fit);
         const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const pixels = frame.data;
         const background = getFrameBackground(pixels, canvas.width, canvas.height);
