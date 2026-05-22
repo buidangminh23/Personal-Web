@@ -1048,12 +1048,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getFrameBackground(pixels, width, height) {
-        const samples = [
-            0,
-            (width - 1) * 4,
-            (height - 1) * width * 4,
-            ((height - 1) * width + width - 1) * 4
+        let minX = width;
+        let minY = height;
+        let maxX = 0;
+        let maxY = 0;
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const index = (y * width + x) * 4;
+                if (pixels[index + 3] === 0) continue;
+                minX = Math.min(minX, x);
+                minY = Math.min(minY, y);
+                maxX = Math.max(maxX, x);
+                maxY = Math.max(maxY, y);
+            }
+        }
+        if (minX > maxX || minY > maxY) {
+            return { r: 255, g: 255, b: 255 };
+        }
+        const points = [
+            [minX, minY],
+            [maxX, minY],
+            [minX, maxY],
+            [maxX, maxY],
+            [Math.round((minX + maxX) / 2), minY],
+            [Math.round((minX + maxX) / 2), maxY]
         ];
+        const samples = points.map(([x, y]) => (y * width + x) * 4);
         const color = samples.reduce((acc, index) => {
             acc.r += pixels[index];
             acc.g += pixels[index + 1];
