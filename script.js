@@ -1103,11 +1103,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (timestamp - lastTime < 1000 / sequence.fps) return;
-        lastTime = timestamp;
+        if (!lastTime) lastTime = timestamp;
+        const frameDuration = 1000 / sequence.fps;
+        const framesToAdvance = Math.floor((timestamp - lastTime) / frameDuration);
+        if (framesToAdvance < 1) return;
+        lastTime += framesToAdvance * frameDuration;
+        currentFrame += framesToAdvance;
+        if (currentFrame >= sequence.frames) {
+            nextSequence();
+            return;
+        }
         drawSprite(sequence, asset);
-        currentFrame++;
-        if (currentFrame >= sequence.frames) nextSequence();
     }
 
     function start() {
