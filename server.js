@@ -65,6 +65,14 @@ function triggerVercelDeploy() {
         }
         console.log(`[Vercel] Production deploy completed.`);
         if (stdout) console.log(stdout);
+        
+        clients.forEach(client => {
+            try {
+                client.write('data: reload\n\n');
+            } catch (e) {
+                clients.delete(client);
+            }
+        });
     });
 }
 
@@ -199,36 +207,7 @@ const server = http.createServer((req, res) => {
             res.statusCode = 200;
             res.setHeader('Content-Type', contentType);
             
-            // Inject Live Reload script into HTML files
-            if (ext === '.html') {
-                let html = data.toString();
-                const injectScript = `
-    <!-- Live Reload Script -->
-    <script>
-      (function() {
-        const eventSource = new EventSource('/events');
-        eventSource.onmessage = function(event) {
-          if (event.data === 'reload') {
-            console.log('Live Reload: File changed, reloading...');
-            window.location.reload();
-          }
-        };
-        eventSource.onerror = function() {
-          // Reconnect after 2 seconds if connection drops
-          setTimeout(() => {
-            if (eventSource.readyState === EventSource.CLOSED) {
-              window.location.reload();
-            }
-          }, 2000);
-        };
-      })();
-    </script>
-                `;
-                html = html.replace('</body>', `${injectScript}\n</body>`);
-                res.end(html);
-            } else {
-                res.end(data);
-            }
+            res.end(data);
         }
     });
 });
