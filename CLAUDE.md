@@ -1,4 +1,4 @@
-# AGENTS.md — Project Operating Rules
+# CLAUDE.md — Project Operating Rules
 
 Áp dụng cho toàn bộ project `Personal Web`, tính từ thư mục root này trở xuống.
 
