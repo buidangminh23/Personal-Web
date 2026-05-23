@@ -163,6 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
             "proj3-detail-f5": "Tích hợp sâu Langflow (local engine), Gemini 2.0 Flash API, cơ chế tự động nạp hồ sơ cá nhân làm ngữ cảnh nền, cung cấp bộ công cụ Khoa học dữ liệu (Data Science Agent) xử lý file CSV và vẽ biểu đồ trực quan.",
             "proj4-title": "Study Web — Swinburne Learning Space",
             "proj4-desc": "Hệ thống quản lý học tập, lưu trữ tài liệu môn học Swinburne (IT, Business, Media) tích hợp lộ trình trực quan và đa ngôn ngữ.",
+            "proj5-title": "汉语学堂 — Học Tiếng Trung",
+            "proj5-desc": "Ứng dụng PWA học tiếng Trung từ vựng HSK 1–6, luyện nghe, luyện viết, bộ thủ, SRS ôn tập và mini game — hoạt động offline hoàn toàn.",
+            "proj5-detail-overview": "汉语学堂 (Hán Ngữ Học Đường) là ứng dụng Progressive Web App (PWA) học tiếng Trung Quốc toàn diện, được xây dựng hoàn toàn bằng HTML5, CSS3 và JavaScript thuần — không sử dụng bất kỳ framework hay thư viện ngoài nào. Ứng dụng bao phủ toàn bộ kho từ vựng HSK 1–6 với hơn 5,000 từ, tích hợp hệ thống SRS (Spaced Repetition System) thông minh giúp tối ưu việc ôn tập theo khoa học ghi nhớ. Đặc biệt, ứng dụng hoạt động hoàn toàn offline nhờ Service Worker, cho phép học mọi lúc mọi nơi không cần kết nối internet.",
+            "proj5-detail-f1": "Kho từ vựng HSK 1–6 đầy đủ với hơn 5,000 từ, mỗi từ kèm phiên âm Pinyin chuẩn, nghĩa tiếng Việt, ví dụ câu và phân loại từ loại (danh từ, động từ, tính từ...) theo chuẩn chương trình HSK quốc tế.",
+            "proj5-detail-f2": "Hệ thống SRS (Spaced Repetition System) tự động tính toán thời điểm ôn tập tối ưu cho từng từ dựa trên lịch sử trả lời đúng/sai, giúp ghi nhớ lâu dài và tiết kiệm thời gian học tập.",
+            "proj5-detail-f3": "Module luyện nghe tích hợp Web Speech API phát âm chuẩn giọng Trung Quốc phổ thông, luyện viết nhận diện nét bút chì kỹ thuật số trên Canvas, và bảng 214 bộ thủ Hán tự có minh họa chi tiết.",
+            "proj5-detail-f4": "Phần Ngữ pháp & Lưu ý tổng hợp các cấu trúc câu, điểm ngữ pháp đặc biệt và những lỗi phổ biến người Việt hay mắc khi học tiếng Trung, kèm ví dụ minh họa thực tế và đối chiếu Hán-Việt.",
+            "proj5-detail-f5": "PWA hoàn chỉnh với Service Worker cache toàn bộ tài nguyên cho phép sử dụng offline 100%, có thể cài đặt như app native trên điện thoại/máy tính, giao diện Dark/Light mode và thống kê tiến độ học tập trực quan.",
             "proj4-detail-overview": "Study Web là một nền tảng quản lý tài liệu học tập và theo dõi lộ trình môn học chuyên biệt được thiết kế cho sinh viên Swinburne University. Website được xây dựng với cấu trúc hiện đại, tập trung vào giao diện tối giản nhưng cực kỳ tối ưu cho việc truy cập bài giảng, tài liệu PDF và theo dõi tiến trình học tập cá nhân. Dự án hỗ trợ cơ chế xác thực người dùng đầy đủ, phân loại tài liệu thông minh theo các khối ngành học IT, Business, Media, và cung cấp tính năng đa ngôn ngữ tức thì để phù hợp với môi trường học tập quốc tế.",
             "proj4-detail-f1": "Hệ thống phân loại tài liệu và bài giảng khoa học theo các khối ngành đào tạo chính của Swinburne: Công nghệ thông tin (IT), Kinh tế (Business) và Truyền thông (Media).",
             "proj4-detail-f2": "Lộ trình môn học (Learning Path) trực quan, cho phép sinh viên click xem chi tiết lộ trình học tập, tài liệu tham khảo và slide bài giảng của từng tuần cụ thể.",
@@ -330,7 +338,15 @@ document.addEventListener('DOMContentLoaded', () => {
             "proj4-detail-f2": "Interactive Learning Paths allowing students to easily explore weekly milestones, recommended readings, and lecture slides.",
             "proj4-detail-f3": "Instantaneous bilingual translation system (English/Vietnamese) to smoothly toggle languages according to student preferences.",
             "proj4-detail-f4": "User authentication flows for secure sign-up, login, and personalized tracking of study progress per student.",
-            "proj4-detail-f5": "Highly responsive interface optimized for mobile views, SEO-friendly HTML5 structure, and ultra-fast page speed hosted on Vercel."
+            "proj4-detail-f5": "Highly responsive interface optimized for mobile views, SEO-friendly HTML5 structure, and ultra-fast page speed hosted on Vercel.",
+            "proj5-title": "汉语学堂 — Learn Chinese",
+            "proj5-desc": "A fully offline-capable PWA for learning Mandarin Chinese — covering HSK 1–6 vocabulary, listening & writing practice, radicals, SRS review, and mini games.",
+            "proj5-detail-overview": "汉语学堂 (Chinese Learning Hall) is a comprehensive Progressive Web App for learning Mandarin Chinese, built entirely with HTML5, CSS3, and vanilla JavaScript — no external frameworks or libraries. The app covers the full HSK 1–6 vocabulary list of 5,000+ words, integrates an intelligent SRS (Spaced Repetition System) to optimise long-term retention, and works 100% offline via Service Worker caching, so you can study anytime, anywhere without an internet connection.",
+            "proj5-detail-f1": "Complete HSK 1–6 vocabulary database with 5,000+ words — each entry includes standard Pinyin romanisation, Vietnamese meaning, example sentences, and part-of-speech classification (noun, verb, adjective…) aligned with the international HSK curriculum.",
+            "proj5-detail-f2": "Intelligent SRS (Spaced Repetition System) that automatically calculates optimal review intervals for each word based on your correct/incorrect answer history, enabling long-term retention while minimising study time.",
+            "proj5-detail-f3": "Listening practice powered by the Web Speech API for authentic Mandarin pronunciation, digital handwriting recognition on Canvas for character writing drills, and a full reference table of 214 Chinese radicals with detailed illustrations.",
+            "proj5-detail-f4": "Grammar & Notes section covering key sentence structures, special grammar points, and common mistakes Vietnamese learners make in Mandarin — with real-world examples and Sino-Vietnamese character comparisons.",
+            "proj5-detail-f5": "Full PWA implementation with Service Worker caching all assets for 100% offline use, installable as a native app on mobile and desktop, Dark/Light mode toggle, and visual study-progress statistics."
         }
     };
 
@@ -915,6 +931,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 'proj4-detail-f3',
                 'proj4-detail-f4',
                 'proj4-detail-f5'
+            ]
+        },
+        'chinese-learning': {
+            id: 'chinese-learning',
+            titleKey: 'proj5-title',
+            img: 'assets/project_chinese_learning.png',
+            category: 'Web App',
+            date: '05/2026',
+            techs: ['HTML5', 'CSS3', 'JavaScript', 'PWA', 'SRS', 'Vercel'],
+            demoLink: 'https://chinese-learning-hazel.vercel.app',
+            githubLink: 'https://github.com/buidangminh23/Chinese-Learning',
+            overviewKey: 'proj5-detail-overview',
+            featuresKeys: [
+                'proj5-detail-f1',
+                'proj5-detail-f2',
+                'proj5-detail-f3',
+                'proj5-detail-f4',
+                'proj5-detail-f5'
             ]
         }
     };
