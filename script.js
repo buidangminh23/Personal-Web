@@ -189,7 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
             "proj4-detail-f2": "Lộ trình môn học (Learning Path) trực quan, cho phép sinh viên click xem chi tiết lộ trình học tập, tài liệu tham khảo và slide bài giảng của từng tuần cụ thể.",
             "proj4-detail-f3": "Chức năng chuyển đổi ngôn ngữ (English/Vietnamese) tức thời trên toàn hệ thống giúp người dùng dễ dàng chuyển đổi môi trường học tập tùy theo nhu cầu.",
             "proj4-detail-f4": "Hệ thống tài khoản người dùng tích hợp các luồng đăng ký, đăng nhập và bảo mật thông tin, sẵn sàng hỗ trợ cá nhân hóa lộ trình học cho từng sinh viên.",
-            "proj4-detail-f5": "Giao diện responsive mượt mà tối ưu hiển thị trên di động, cấu trúc HTML5 chuẩn SEO, cùng tốc độ tải trang ấn tượng nhờ triển khai trực tiếp trên nền tảng Vercel."
+            "proj4-detail-f5": "Giao diện responsive mượt mà tối ưu hiển thị trên di động, cấu trúc HTML5 chuẩn SEO, cùng tốc độ tải trang ấn tượng nhờ triển khai trực tiếp trên nền tảng Vercel.",
+            "cv-title": "Hồ Sơ Năng Lực (CV)",
+            "cv-contact-title": "Liên Hệ",
+            "cv-education-title": "Học Vấn",
+            "cv-skills-title": "Kỹ Năng Chính",
+            "cv-summary-title": "Mục Tiêu Nghề Nghiệp",
+            "cv-summary-desc": "Đam mê thiết lập các mô hình Khoa học Dữ liệu, kết hợp thế mạnh phát triển Web App và tích hợp AI để tối ưu hóa giải pháp số, nâng cao trải nghiệm người dùng.",
+            "cv-projects-title": "Dự Án Tiêu Biểu",
+            "cv-certs-title": "Chứng Chỉ & Thành Tích"
         },
         en: {
             "nav-home": "Home",
@@ -372,7 +380,15 @@ document.addEventListener('DOMContentLoaded', () => {
             "proj5-detail-f2": "Intelligent SRS (Spaced Repetition System) that automatically calculates optimal review intervals for each word based on your correct/incorrect answer history, enabling long-term retention while minimising study time.",
             "proj5-detail-f3": "Listening practice powered by the Web Speech API for authentic Mandarin pronunciation, digital handwriting recognition on Canvas for character writing drills, and a full reference table of 214 Chinese radicals with detailed illustrations.",
             "proj5-detail-f4": "Grammar & Notes section covering key sentence structures, special grammar points, and common mistakes Vietnamese learners make in Mandarin — with real-world examples and Sino-Vietnamese character comparisons.",
-            "proj5-detail-f5": "Full PWA implementation with Service Worker caching all assets for 100% offline use, installable as a native app on mobile and desktop, Dark/Light mode toggle, and visual study-progress statistics."
+            "proj5-detail-f5": "Full PWA implementation with Service Worker caching all assets for 100% offline use, installable as a native app on mobile and desktop, Dark/Light mode toggle, and visual study-progress statistics.",
+            "cv-title": "Curriculum Vitae (CV)",
+            "cv-contact-title": "Contact",
+            "cv-education-title": "Education",
+            "cv-skills-title": "Core Skills",
+            "cv-summary-title": "Career Objective",
+            "cv-summary-desc": "Passionate about building Data Science models, combining strengths in Web App development and AI integration to optimize digital solutions and enhance user experience.",
+            "cv-projects-title": "Key Projects",
+            "cv-certs-title": "Certifications & Achievements"
         }
     };
 
@@ -1096,10 +1112,51 @@ document.addEventListener('DOMContentLoaded', () => {
         backBtn.addEventListener('click', closeProjectDetails);
     }
 
-    // Escape key to close
+    const cvOverlay = document.getElementById('cv-view-overlay');
+    const cvBackBtn = document.getElementById('btn-cv-back');
+
+    function openCVOverlay() {
+        if (!cvOverlay) return;
+        
+        setLanguage(currentLang);
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        cvOverlay.setAttribute('aria-hidden', 'false');
+        cvOverlay.classList.add('active');
+        document.body.classList.add('project-detail-open');
+        cvOverlay.scrollTop = 0;
+    }
+
+    function closeCVOverlay() {
+        if (!cvOverlay) return;
+        
+        cvOverlay.setAttribute('aria-hidden', 'true');
+        cvOverlay.classList.remove('active');
+        document.body.classList.remove('project-detail-open');
+    }
+
+    document.addEventListener('click', (e) => {
+        const isCvTrigger = e.target.closest('#nav-link-cv') || e.target.closest('#hero-btn-cv');
+        if (isCvTrigger) {
+            e.preventDefault();
+            openCVOverlay();
+        }
+    });
+
+    if (cvBackBtn) {
+        cvBackBtn.addEventListener('click', closeCVOverlay);
+    }
+
     window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && detailOverlay && detailOverlay.classList.contains('active')) {
-            closeProjectDetails();
+        if (e.key === 'Escape') {
+            if (detailOverlay && detailOverlay.classList.contains('active')) {
+                closeProjectDetails();
+            }
+            if (cvOverlay && cvOverlay.classList.contains('active')) {
+                closeCVOverlay();
+            }
         }
     });
 });

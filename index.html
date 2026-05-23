@@ -56,7 +56,7 @@
                     <li><a href="#activities" class="nav-link" data-i18n="nav-activities">Hoạt động</a></li>
                     <li><a href="#achievements" class="nav-link" data-i18n="nav-achievements">Thành tích</a></li>
                     <li><a href="#contact" class="nav-link" data-i18n="nav-contact">Liên hệ</a></li>
-                    <li><a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer" class="nav-link" data-i18n="nav-cv">CV</a></li>
+                    <li><a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer" class="nav-link" data-i18n="nav-cv" id="nav-link-cv">CV</a></li>
                 </ul>
             </nav>
 
@@ -892,6 +892,98 @@
         </div>
     </div>
 
+    <!-- CV Fullscreen View (SPA Overlay) -->
+    <div class="project-details-view" id="cv-view-overlay" aria-hidden="true" role="dialog">
+        <div class="container project-details-container">
+            <header class="details-header">
+                <button class="btn-back" id="btn-cv-back" aria-label="Quay lại danh mục">
+                    <i data-lucide="arrow-left"></i> <span data-i18n="back-to-portfolio">Quay lại</span>
+                </button>
+                <h2 class="details-nav-title" data-i18n="cv-title">Hồ Sơ Năng Lực (CV)</h2>
+                <div class="details-header-placeholder"></div> <!-- Cân bằng layout -->
+            </header>
+            
+            <div class="cv-content-layout glass-card">
+                <!-- Left column -->
+                <div class="cv-sidebar">
+                    <div class="cv-avatar-container">
+                        <img src="assets/avatar.png" alt="Bùi Đăng Minh" class="cv-avatar">
+                    </div>
+                    <div class="cv-section">
+                        <h3 class="cv-section-title" data-i18n="cv-contact-title">Liên Hệ</h3>
+                        <ul class="cv-contact-list">
+                            <li><i data-lucide="phone"></i> <span>0384741350</span></li>
+                            <li><i data-lucide="mail"></i> <span>buidangminh.lh@gmail.com</span></li>
+                            <li><i data-lucide="map-pin"></i> <span data-i18n="about-location-val">Hà Nội, Việt Nam</span></li>
+                            <li><i data-lucide="github"></i> <span>github.com/buidangminh23</span></li>
+                        </ul>
+                    </div>
+                    <div class="cv-section">
+                        <h3 class="cv-section-title" data-i18n="cv-education-title">Học Vấn</h3>
+                        <div class="cv-education-item">
+                            <h4 class="cv-school">Swinburne University</h4>
+                            <p class="cv-degree" data-i18n="exp1-title">Sinh viên Khoa học dữ liệu</p>
+                            <p class="cv-date">2024 - Hiện tại</p>
+                        </div>
+                    </div>
+                    <div class="cv-section">
+                        <h3 class="cv-section-title" data-i18n="cv-skills-title">Kỹ Năng Chính</h3>
+                        <div class="cv-skill-tags">
+                            <span>Python</span>
+                            <span>JavaScript</span>
+                            <span>HTML5/CSS3</span>
+                            <span>Flask</span>
+                            <span>SQLite</span>
+                            <span>Gemini API</span>
+                            <span>PWA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right column -->
+                <div class="cv-main">
+                    <div class="cv-header-info">
+                        <h1 class="cv-name">Bùi Đăng Minh</h1>
+                        <p class="cv-subtitle" data-i18n="exp1-title">Sinh viên Khoa học dữ liệu</p>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h3 class="cv-section-title-main" data-i18n="cv-summary-title">Mục Tiêu Nghề Nghiệp</h3>
+                        <p class="cv-text" data-i18n="cv-summary-desc">Đam mê thiết lập các mô hình Khoa học Dữ liệu, kết hợp thế mạnh phát triển Web App và tích hợp AI để tối ưu hóa giải pháp số, nâng cao trải nghiệm người dùng.</p>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h3 class="cv-section-title-main" data-i18n="cv-projects-title">Dự Án Tiêu Biểu</h3>
+                        
+                        <div class="cv-project-item">
+                            <h4 class="cv-project-name">GEMERA — Telegram Bot & AI Dashboard</h4>
+                            <p class="cv-project-desc" data-i18n="proj2-desc">Bot Telegram tự động scan, lọc và đăng bài lên kênh với AI Vision chống trùng, dashboard real-time và phân tích kênh chuyên sâu.</p>
+                        </div>
+                        
+                        <div class="cv-project-item">
+                            <h4 class="cv-project-name">Minh Stark Agent OS</h4>
+                            <p class="cv-project-desc" data-i18n="proj3-desc">Hệ thống AI agent cá nhân chạy local: AutoPilot tự chọn agent, quản lý task/deadline, lịch học, automation và tích hợp Gemini API.</p>
+                        </div>
+
+                        <div class="cv-project-item">
+                            <h4 class="cv-project-name">Study Web — Swinburne Learning Space</h4>
+                            <p class="cv-project-desc" data-i18n="proj4-desc">Hệ thống quản lý học tập, lưu trữ tài liệu môn học Swinburne (IT, Business, Media) tích hợp lộ trình trực quan và đa ngôn ngữ.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h3 class="cv-section-title-main" data-i18n="cv-certs-title">Chứng Chỉ & Thành Tích</h3>
+                        <ul class="cv-bullet-list">
+                            <li><strong data-i18n="ach1-title">Học bổng Sinh viên Xuất sắc Swinburne</strong></li>
+                            <li><strong data-i18n="ach-hl-title2">Chứng nhận Sinh viên xuất sắc nhất môn học Global Citizen</strong></li>
+                            <li><strong>Microsoft Office Specialist: Associate (MOS Word, Excel, PowerPoint)</strong></li>
+                            <li><strong>IELTS Certificate: 5.5</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- =============================================
          FLOATING SOCIAL CONTACT WIDGET
