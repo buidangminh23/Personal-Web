@@ -52,6 +52,7 @@
                     <li><a href="#about" class="nav-link" data-i18n="nav-about">Giới thiệu</a></li>
                     <li><a href="#skills" class="nav-link" data-i18n="nav-skills">Kỹ năng</a></li>
                     <li><a href="#projects" class="nav-link" data-i18n="nav-projects">Dự án</a></li>
+                    <li><a href="#github" class="nav-link" data-i18n="nav-github">GitHub</a></li>
                     <li><a href="#experience" class="nav-link" data-i18n="nav-experience">Kinh nghiệm</a></li>
                     <li><a href="#activities" class="nav-link" data-i18n="nav-activities">Hoạt động</a></li>
                     <li><a href="#achievements" class="nav-link" data-i18n="nav-achievements">Thành tích</a></li>
@@ -528,6 +529,128 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Section -->
+        <section id="github" class="github-section section-padding scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" data-i18n="github-subtitle">MÃ NGUỒN HOẠT ĐỘNG</span>
+                    <h2 class="title" data-i18n="github-title">Hồ Sơ GitHub</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="github-layout">
+                    <!-- Left Column: Profile Card -->
+                    <div class="github-profile-card glass-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar-wrapper">
+                                <img src="https://avatars.githubusercontent.com/u/256920857?v=4" alt="Bùi Đăng Minh" class="profile-avatar" id="github-avatar">
+                            </div>
+                            <div class="profile-info-wrapper">
+                                <h3 class="profile-name" id="github-name">Bùi Đăng Minh</h3>
+                                <a href="https://github.com/buidangminh23" target="_blank" rel="noopener noreferrer" class="profile-username">
+                                    <span>@buidangminh23</span> <i data-lucide="external-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <p class="profile-bio" id="github-bio" data-i18n="github-bio-text">Đang học tập và phát triển các sản phẩm công nghệ sáng tạo, tối ưu hóa trải nghiệm người dùng.</p>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-val" id="github-repos-count">5+</span>
+                                <span class="stat-lbl" data-i18n="github-stat-repos">Kho lưu trữ</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-val" id="github-followers-count">--</span>
+                                <span class="stat-lbl" data-i18n="github-stat-followers">Người theo dõi</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-val" id="github-following-count">--</span>
+                                <span class="stat-lbl" data-i18n="github-stat-following">Đang theo dõi</span>
+                            </div>
+                        </div>
+
+                        <a href="https://github.com/buidangminh23" target="_blank" rel="noopener noreferrer" class="btn btn-primary glow-btn github-profile-btn">
+                            <span data-i18n="github-visit-btn">Ghé thăm GitHub</span>
+                            <i data-lucide="github"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Right Column: GitHub Readme Stats -->
+                    <div class="github-stats-container">
+                        <div class="stats-card-wrapper glass-card">
+                            <img src="" alt="GitHub Stats" class="github-stat-img" id="github-stats-card">
+                        </div>
+                        <div class="stats-card-wrapper glass-card">
+                            <img src="" alt="GitHub Top Languages" class="github-stat-img" id="github-langs-card">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Repositories Subtitle -->
+                <div class="github-repos-header">
+                    <h3 class="repos-title" data-i18n="github-repos-title">Kho Lưu Trữ Đang Hoạt Động</h3>
+                    <p class="repos-desc" data-i18n="github-repos-desc">Các dự án và học tập được cập nhật gần đây nhất</p>
+                </div>
+
+                <!-- Repositories Grid -->
+                <div class="github-repos-grid" id="github-repos-grid">
+                    <!-- Fallback Static Repos (will be updated dynamically) -->
+                    <div class="repo-card glass-card">
+                        <div class="repo-card-header">
+                            <i data-lucide="folder" class="repo-icon"></i>
+                            <a href="https://github.com/buidangminh23/Study-Web" target="_blank" rel="noopener noreferrer" class="repo-title">Study-Web</a>
+                        </div>
+                        <p class="repo-description">Nền tảng hỗ trợ học tập toàn diện cho sinh viên Swinburne University.</p>
+                        <div class="repo-footer">
+                            <div class="repo-lang">
+                                <span class="lang-dot python"></span>
+                                <span>Python</span>
+                            </div>
+                            <div class="repo-metrics">
+                                <span><i data-lucide="star"></i> 1</span>
+                                <span><i data-lucide="git-fork"></i> 0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="repo-card glass-card">
+                        <div class="repo-card-header">
+                            <i data-lucide="folder" class="repo-icon"></i>
+                            <a href="https://github.com/buidangminh23/Chinese-Learning" target="_blank" rel="noopener noreferrer" class="repo-title">Chinese-Learning</a>
+                        </div>
+                        <p class="repo-description">Ứng dụng học tiếng Trung tương tác giúp cải thiện từ vựng và ngữ pháp.</p>
+                        <div class="repo-footer">
+                            <div class="repo-lang">
+                                <span class="lang-dot js"></span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="repo-metrics">
+                                <span><i data-lucide="star"></i> 0</span>
+                                <span><i data-lucide="git-fork"></i> 0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="repo-card glass-card">
+                        <div class="repo-card-header">
+                            <i data-lucide="folder" class="repo-icon"></i>
+                            <a href="https://github.com/buidangminh23/Personal-Web" target="_blank" rel="noopener noreferrer" class="repo-title">Personal-Web</a>
+                        </div>
+                        <p class="repo-description">Trang web giới thiệu năng lực bản thân, dự án và CV tương tác.</p>
+                        <div class="repo-footer">
+                            <div class="repo-lang">
+                                <span class="lang-dot js"></span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="repo-metrics">
+                                <span><i data-lucide="star"></i> 1</span>
+                                <span><i data-lucide="git-fork"></i> 0</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
