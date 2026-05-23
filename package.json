@@ -1,0 +1,20 @@
+{
+  "name": "personal-web",
+  "version": "1.0.0",
+  "description": "Personal portfolio website with Vercel Speed Insights",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "web",
+    "personal"
+  ],
+  "author": "Bùi Đăng Minh",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.0"
+  }
+}

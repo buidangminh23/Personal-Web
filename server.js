@@ -13,11 +13,11 @@ const SECURITY_HEADERS = {
     'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
     'Content-Security-Policy': [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
+        "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://va.vercel-scripts.com",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "font-src 'self' https://fonts.gstatic.com",
         "img-src 'self' data:",
-        "connect-src 'self'",
+        "connect-src 'self' https://vitals.vercel-insights.com https://vitals.vercel-analytics.com",
         "frame-ancestors 'none'",
         "base-uri 'self'",
         "form-action 'self'"
