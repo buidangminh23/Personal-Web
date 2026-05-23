@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "about-studentid-label": "Mã sinh viên:",
             "about-email-label": "Email cá nhân:",
             "about-student-email-label": "Email sinh viên:",
+            "about-github-label": "GitHub:",
             "about-phone-label": "Điện thoại / Zalo:",
             "about-location-label": "Vị trí:",
             "about-location-val": "Hà Nội, Việt Nam",
@@ -233,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "about-studentid-label": "Student ID:",
             "about-email-label": "Personal Email:",
             "about-student-email-label": "Student Email:",
+            "about-github-label": "GitHub:",
             "about-phone-label": "Phone / Zalo:",
             "about-location-label": "Location:",
             "about-location-val": "Hanoi, Vietnam",
@@ -1055,13 +1057,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 
-                ${project.demoLink && project.demoLink !== '#' ? `
+                ${(project.demoLink && project.demoLink !== '#') || (project.githubLink && project.githubLink !== '#') ? `
                 <div class="sidebar-info-group">
                     <span class="sidebar-label" data-i18n="proj-meta-links">Liên kết</span>
-                    <div class="sidebar-links">
-                        <a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" class="sidebar-btn sidebar-btn-primary glow-btn">
+                    <div class="sidebar-links" style="display: flex; flex-direction: column; gap: 10px;">
+                        ${project.demoLink && project.demoLink !== '#' ? `
+                        <a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" class="sidebar-btn sidebar-btn-primary glow-btn" style="width: 100%; justify-content: center;">
                             <span data-i18n="proj-meta-demo">Trải nghiệm trực tiếp</span> <i data-lucide="external-link"></i>
                         </a>
+                        ` : ''}
+                        ${project.githubLink && project.githubLink !== '#' ? `
+                        <a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" class="sidebar-btn sidebar-btn-outline" style="width: 100%; justify-content: center;">
+                            <span data-i18n="proj-meta-github">Xem mã nguồn</span> <i data-lucide="github"></i>
+                        </a>
+                        ` : ''}
                     </div>
                 </div>
                 ` : ''}
