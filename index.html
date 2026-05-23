@@ -1073,28 +1073,23 @@
 
     <!-- Script File -->
     <script src="script.js?v=20260522-remove-hero3"></script>
-    <!-- Live Reload Script for Dev Mode -->
+    <!-- Live Reload Script -->
     <script>
       (function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const isDevMode = urlParams.get('dev') === 'true' || isLocal;
-        if (isDevMode) {
-          const eventSource = new EventSource('http://localhost:203/events');
-          eventSource.onmessage = function(event) {
-            if (event.data === 'reload') {
-              console.log('Live Reload: File changed, reloading...');
+        const eventSource = new EventSource('http://localhost:203/events');
+        eventSource.onmessage = function(event) {
+          if (event.data === 'reload') {
+            console.log('Live Reload: File changed, reloading...');
+            window.location.reload();
+          }
+        };
+        eventSource.onerror = function() {
+          setTimeout(() => {
+            if (eventSource.readyState === EventSource.CLOSED) {
               window.location.reload();
             }
-          };
-          eventSource.onerror = function() {
-            setTimeout(() => {
-              if (eventSource.readyState === EventSource.CLOSED) {
-                window.location.reload();
-              }
-            }, 2000);
-          };
-        }
+          }, 2000);
+        };
       })();
     </script>
 </body>
