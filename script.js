@@ -57,6 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "skills-tab-tools": "Công cụ & Khác",
             "skill-responsive": "Responsive & UI/UX Design",
             "skill-ai": "AI Prompt Engineering / LLMs",
+            "nav-github": "GitHub",
+            "github-subtitle": "MÃ NGUỒN HOẠT ĐỘNG",
+            "github-title": "Hồ Sơ GitHub",
+            "github-bio-text": "Đang học tập và phát triển các sản phẩm công nghệ sáng tạo, tối ưu hóa trải nghiệm người dùng.",
+            "github-stat-repos": "Kho lưu trữ",
+            "github-stat-followers": "Người theo dõi",
+            "github-stat-following": "Đang theo dõi",
+            "github-visit-btn": "Ghé thăm GitHub",
+            "github-repos-title": "Kho Lưu Trữ Đang Hoạt Động",
+            "github-repos-desc": "Các dự án và học tập được cập nhật gần đây nhất",
             "projects-subtitle": "SẢN PHẨM",
             "projects-title": "Dự Án Nổi Bật",
             "projects-filter-all": "Tất cả",
@@ -249,6 +259,16 @@ document.addEventListener('DOMContentLoaded', () => {
             "skills-tab-tools": "Tools & Others",
             "skill-responsive": "Responsive & UI/UX Design",
             "skill-ai": "AI Prompt Engineering / LLMs",
+            "nav-github": "GitHub",
+            "github-subtitle": "SOURCE CODE ACTIVITY",
+            "github-title": "GitHub Profile",
+            "github-bio-text": "Learning and developing innovative tech products, optimizing user experience.",
+            "github-stat-repos": "Repositories",
+            "github-stat-followers": "Followers",
+            "github-stat-following": "Following",
+            "github-visit-btn": "Visit GitHub",
+            "github-repos-title": "Active Repositories",
+            "github-repos-desc": "Most recently updated projects and learning materials",
             "projects-subtitle": "PORTFOLIO",
             "projects-title": "Featured Projects",
             "projects-filter-all": "All",
@@ -454,6 +474,8 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.remove('dark-theme');
         if (themeToggle) themeToggle.setAttribute('aria-expanded', 'true');
     }
+    
+    updateGitHubStatsImages();
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
@@ -469,7 +491,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('theme', 'dark');
             }
             
-            // Re-render icons if necessary
+            updateGitHubStatsImages();
+            
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
@@ -542,6 +565,105 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Language
     setLanguage(currentLang);
+
+    function updateGitHubStatsImages() {
+        const isLight = body.classList.contains('light-theme');
+        const statsCard = document.getElementById('github-stats-card');
+        const langsCard = document.getElementById('github-langs-card');
+        
+        if (!statsCard || !langsCard) return;
+        
+        const username = 'buidangminh23';
+        if (isLight) {
+            statsCard.src = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=default&bg_color=ffffff&title_color=1d4ed8&text_color=4b5563&icon_color=4338ca&border_color=00000010&hide_border=false`;
+            langsCard.src = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=default&bg_color=ffffff&title_color=1d4ed8&text_color=4b5563&icon_color=4338ca&border_color=00000010&hide_border=false`;
+        } else {
+            statsCard.src = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
+            langsCard.src = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
+        }
+    }
+
+    function fetchGitHubData() {
+        const username = 'buidangminh23';
+        
+        fetch(`https://api.github.com/users/${username}`)
+            .then(res => {
+                if (!res.ok) throw new Error('API Rate Limit or Error');
+                return res.json();
+            })
+            .then(data => {
+                const avatarImg = document.getElementById('github-avatar');
+                const nameEl = document.getElementById('github-name');
+                const bioEl = document.getElementById('github-bio');
+                const reposEl = document.getElementById('github-repos-count');
+                const followersEl = document.getElementById('github-followers-count');
+                const followingEl = document.getElementById('github-following-count');
+                
+                if (avatarImg && data.avatar_url) avatarImg.src = data.avatar_url;
+                if (nameEl && data.name) nameEl.textContent = data.name;
+                if (bioEl && data.bio) {
+                    bioEl.textContent = data.bio;
+                    bioEl.removeAttribute('data-i18n');
+                }
+                if (reposEl && data.public_repos !== undefined) reposEl.textContent = data.public_repos;
+                if (followersEl && data.followers !== undefined) followersEl.textContent = data.followers;
+                if (followingEl && data.following !== undefined) followingEl.textContent = data.following;
+            })
+            .catch(err => {
+                const followersEl = document.getElementById('github-followers-count');
+                const followingEl = document.getElementById('github-following-count');
+                if (followersEl) followersEl.textContent = '10+';
+                if (followingEl) followingEl.textContent = '10+';
+            });
+            
+        fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
+            .then(res => {
+                if (!res.ok) throw new Error('API Rate Limit or Error');
+                return res.json();
+            })
+            .then(repos => {
+                const reposGrid = document.getElementById('github-repos-grid');
+                if (!reposGrid) return;
+                
+                reposGrid.innerHTML = '';
+                
+                repos.forEach(repo => {
+                    const card = document.createElement('div');
+                    card.className = 'repo-card glass-card';
+                    
+                    const langClass = (repo.language || 'other').toLowerCase();
+                    const langName = repo.language || 'Other';
+                    
+                    card.innerHTML = `
+                        <div class="repo-card-header">
+                            <i data-lucide="folder" class="repo-icon"></i>
+                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-title">${repo.name}</a>
+                        </div>
+                        <p class="repo-description">${repo.description || 'No description provided.'}</p>
+                        <div class="repo-footer">
+                            <div class="repo-lang">
+                                <span class="lang-dot ${langClass}"></span>
+                                <span>${langName}</span>
+                            </div>
+                            <div class="repo-metrics">
+                                <span><i data-lucide="star"></i> ${repo.stargazers_count}</span>
+                                <span><i data-lucide="git-fork"></i> ${repo.forks_count}</span>
+                            </div>
+                        </div>
+                    `;
+                    reposGrid.appendChild(card);
+                });
+                
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            })
+            .catch(err => {
+                // keep fallback static html
+            });
+    }
+
+    fetchGitHubData();
 
     // ==========================================
     // 4. HERO TYPING EFFECT
