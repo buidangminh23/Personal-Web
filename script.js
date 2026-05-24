@@ -575,11 +575,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const username = 'buidangminh23';
         if (isLight) {
-            statsCard.src = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=default&bg_color=ffffff&title_color=1d4ed8&text_color=4b5563&icon_color=4338ca&border_color=00000010&hide_border=false`;
-            langsCard.src = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=default&bg_color=ffffff&title_color=1d4ed8&text_color=4b5563&icon_color=4338ca&border_color=00000010&hide_border=false`;
+            statsCard.src = `https://github-readme-stats-one-bice.vercel.app/api?username=${username}&show_icons=true&theme=default&bg_color=ffffff&title_color=1d4ed8&text_color=4b5563&icon_color=4338ca&border_color=00000010&hide_border=false`;
+            langsCard.src = `https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=default&bg_color=ffffff&title_color=1d4ed8&text_color=4b5563&icon_color=4338ca&border_color=00000010&hide_border=false`;
         } else {
-            statsCard.src = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
-            langsCard.src = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
+            statsCard.src = `https://github-readme-stats-one-bice.vercel.app/api?username=${username}&show_icons=true&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
+            langsCard.src = `https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
         }
     }
 
@@ -612,8 +612,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => {
                 const followersEl = document.getElementById('github-followers-count');
                 const followingEl = document.getElementById('github-following-count');
-                if (followersEl) followersEl.textContent = '10+';
-                if (followingEl) followingEl.textContent = '10+';
+                if (followersEl) followersEl.textContent = '0';
+                if (followingEl) followingEl.textContent = '0';
             });
             
         fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
