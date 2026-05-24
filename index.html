@@ -1211,6 +1211,44 @@
                         hostname.endsWith('.local');
 
         if (!isLocal) {
+          let currentVersion = null;
+
+          fetch('/version.json')
+            .then(res => res.json())
+            .then(data => {
+              currentVersion = data.version;
+            })
+            .catch(() => {});
+
+          setInterval(() => {
+            fetch(`/version.json?t=${Date.now()}`)
+              .then(res => res.json())
+              .then(data => {
+                if (currentVersion && data.version && data.version !== currentVersion) {
+                  const isEN = localStorage.getItem('lang') === 'en';
+                  const message = isEN 
+                    ? "New updates are available! Reloading in 3 seconds..." 
+                    : "Đã có bản cập nhật mới trên hệ thống! Trang web sẽ tự động làm mới sau 3 giây...";
+                  
+                  const toastContainer = document.getElementById('toast-container');
+                  if (toastContainer) {
+                    const toast = document.createElement('div');
+                    toast.className = 'toast toast-success';
+                    toast.style.position = 'fixed';
+                    toast.style.bottom = '20px';
+                    toast.style.right = '20px';
+                    toast.style.zIndex = '9999';
+                    toast.innerHTML = `<span class="toast-message">${message}</span>`;
+                    toastContainer.appendChild(toast);
+                  }
+                  
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 3000);
+                }
+              })
+              .catch(() => {});
+          }, 20000);
           return;
         }
 

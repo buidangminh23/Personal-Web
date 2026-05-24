@@ -77,6 +77,12 @@ function triggerVercelDeploy() {
 }
 
 function triggerAutoGitPush(filename) {
+    try {
+        fs.writeFileSync(path.join(__dirname, 'version.json'), JSON.stringify({ version: Date.now() }));
+    } catch (e) {
+        console.error(`[Watcher] Failed to write version.json: ${e.message}`);
+    }
+
     clearTimeout(gitPushTimeout);
     gitPushTimeout = setTimeout(() => {
         exec('git status --porcelain', (err, stdout) => {
