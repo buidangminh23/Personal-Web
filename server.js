@@ -16,8 +16,8 @@ const SECURITY_HEADERS = {
         "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "font-src 'self' https://fonts.gstatic.com",
-        "img-src 'self' data:",
-        "connect-src 'self'",
+        "img-src 'self' data: https://*.githubusercontent.com https://*.vercel.app",
+        "connect-src 'self' https://api.github.com",
         "frame-ancestors 'none'",
         "base-uri 'self'",
         "form-action 'self'"
