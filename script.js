@@ -414,6 +414,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const repoDescriptions = {
+        vi: {
+            'Personal-Web': 'Trang web giới thiệu năng lực bản thân, dự án và CV tương tác.',
+            'Chinese-Learning': 'Ứng dụng học tiếng Trung tương tác giúp cải thiện từ vựng và ngữ pháp.',
+            'Study-Web': 'Nền tảng hỗ trợ học tập toàn diện cho sinh viên Swinburne University.',
+            'Minh-Stark': 'Hệ thống AI agent cá nhân chạy local giúp quản lý lịch học, deadline và automation.',
+            'Limit-Noti': 'Hệ thống gửi thông báo tự động và quản lý giới hạn hạn mức thời gian thực.'
+        },
+        en: {
+            'Personal-Web': 'Interactive personal portfolio website showcasing skills, projects, and CV.',
+            'Chinese-Learning': 'Interactive Chinese learning application to improve vocabulary and grammar.',
+            'Study-Web': 'Comprehensive learning support platform for Swinburne University students.',
+            'Minh-Stark': 'Local personal AI agent system to manage study schedules, deadlines, and automation.',
+            'Limit-Noti': 'Automated notification system and real-time threshold limit management.'
+        }
+    };
+    let cachedRepos = [];
+
     // ==========================================
     // 1. MOBILE HAMBURGER MENU
     // ==========================================
@@ -554,6 +572,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.setAttribute('placeholder', translations[lang][key]);
             }
         });
+        if (typeof cachedRepos !== 'undefined' && cachedRepos.length > 0) {
+            renderGitHubRepos(cachedRepos);
+        }
     }
 
     if (langToggle) {
@@ -580,6 +601,48 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             statsCard.src = `https://github-readme-stats-one-bice.vercel.app/api?username=${username}&show_icons=true&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
             langsCard.src = `https://github-readme-stats-one-bice.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=dark&bg_color=0e0c1b&title_color=00f0ff&text_color=9ca3af&icon_color=0066ff&border_color=ffffff10&hide_border=false`;
+        }
+    }
+
+    function renderGitHubRepos(repos) {
+        const reposGrid = document.getElementById('github-repos-grid');
+        if (!reposGrid) return;
+        
+        reposGrid.innerHTML = '';
+        
+        repos.forEach(repo => {
+            const card = document.createElement('div');
+            card.className = 'repo-card glass-card';
+            
+            const langClass = (repo.language || 'other').toLowerCase();
+            const langName = repo.language || 'Other';
+            
+            const description = (repoDescriptions[currentLang] && repoDescriptions[currentLang][repo.name]) 
+                || repo.description 
+                || (currentLang === 'vi' ? 'Dự án phát triển và tối ưu hóa tính năng ứng dụng.' : 'Application feature development and optimization project.');
+            
+            card.innerHTML = `
+                <div class="repo-card-header">
+                    <i data-lucide="folder" class="repo-icon"></i>
+                    <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-title">${repo.name}</a>
+                </div>
+                <p class="repo-description">${description}</p>
+                <div class="repo-footer">
+                    <div class="repo-lang">
+                        <span class="lang-dot ${langClass}"></span>
+                        <span>${langName}</span>
+                    </div>
+                    <div class="repo-metrics">
+                        <span><i data-lucide="star"></i> ${repo.stargazers_count}</span>
+                        <span><i data-lucide="git-fork"></i> ${repo.forks_count}</span>
+                    </div>
+                </div>
+            `;
+            reposGrid.appendChild(card);
+        });
+        
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
         }
     }
 
@@ -622,41 +685,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return res.json();
             })
             .then(repos => {
-                const reposGrid = document.getElementById('github-repos-grid');
-                if (!reposGrid) return;
-                
-                reposGrid.innerHTML = '';
-                
-                repos.forEach(repo => {
-                    const card = document.createElement('div');
-                    card.className = 'repo-card glass-card';
-                    
-                    const langClass = (repo.language || 'other').toLowerCase();
-                    const langName = repo.language || 'Other';
-                    
-                    card.innerHTML = `
-                        <div class="repo-card-header">
-                            <i data-lucide="folder" class="repo-icon"></i>
-                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-title">${repo.name}</a>
-                        </div>
-                        <p class="repo-description">${repo.description || 'No description provided.'}</p>
-                        <div class="repo-footer">
-                            <div class="repo-lang">
-                                <span class="lang-dot ${langClass}"></span>
-                                <span>${langName}</span>
-                            </div>
-                            <div class="repo-metrics">
-                                <span><i data-lucide="star"></i> ${repo.stargazers_count}</span>
-                                <span><i data-lucide="git-fork"></i> ${repo.forks_count}</span>
-                            </div>
-                        </div>
-                    `;
-                    reposGrid.appendChild(card);
-                });
-                
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
+                cachedRepos = repos;
+                renderGitHubRepos(repos);
             })
             .catch(err => {
                 // keep fallback static html
