@@ -438,6 +438,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger-menu');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
+    const navIndicator = document.getElementById('nav-indicator');
+
+    function updateIndicator(targetLink) {
+        if (!navIndicator) return;
+        if (!targetLink) {
+            navIndicator.style.opacity = '0';
+            return;
+        }
+        const navMenuEl = document.getElementById('nav-menu');
+        if (!navMenuEl) return;
+        const navRect = navMenuEl.getBoundingClientRect();
+        const targetRect = targetLink.getBoundingClientRect();
+        const left = targetRect.left - navRect.left;
+        const top = targetRect.top - navRect.top;
+        const width = targetRect.width;
+        const height = targetRect.height;
+        navIndicator.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+        navIndicator.style.width = `${width}px`;
+        navIndicator.style.height = `${height}px`;
+        navIndicator.style.opacity = '1';
+    }
 
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
@@ -453,6 +474,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 bars[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
                 bars[1].style.opacity = '0';
                 bars[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+                setTimeout(() => {
+                    const activeLink = document.querySelector('.nav-link.active');
+                    if (activeLink) updateIndicator(activeLink);
+                }, 300);
             } else {
                 bars[0].style.transform = 'none';
                 bars[1].style.opacity = '1';
@@ -575,6 +600,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof cachedRepos !== 'undefined' && cachedRepos.length > 0) {
             renderGitHubRepos(cachedRepos);
         }
+        setTimeout(() => {
+            const activeLink = document.querySelector('.nav-link.active');
+            if (activeLink) updateIndicator(activeLink);
+        }, 50);
     }
 
     if (langToggle) {
@@ -873,7 +902,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 8. ACTIVE NAVIGATION LINK ON SCROLL
+    // 8. ACTIVE NAVIGATION LINK ON SCROLL & LIQUID INDICATOR
     // ==========================================
     const sections = document.querySelectorAll('section');
     
@@ -892,6 +921,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active');
+                        if (navMenu && !navMenu.matches(':hover')) {
+                            updateIndicator(link);
+                        }
                     }
                 });
             }
@@ -900,6 +932,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => {
         navObserver.observe(section);
+    });
+
+    setTimeout(() => {
+        const activeLink = document.querySelector('.nav-link.active');
+        if (activeLink) updateIndicator(activeLink);
+    }, 200);
+
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            updateIndicator(link);
+        });
+
+        link.addEventListener('mousemove', (e) => {
+            const rect = link.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            link.style.transform = `translate3d(${x * 0.15}px, ${y * 0.15}px, 0)`;
+        });
+
+        link.addEventListener('mouseleave', () => {
+            link.style.transform = 'none';
+        });
+    });
+
+    if (navMenu) {
+        navMenu.addEventListener('mouseleave', () => {
+            const activeLink = document.querySelector('.nav-link.active');
+            updateIndicator(activeLink);
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        const activeLink = document.querySelector('.nav-link.active');
+        if (activeLink) updateIndicator(activeLink);
     });
 
     // ==========================================
