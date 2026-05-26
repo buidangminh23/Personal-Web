@@ -382,10 +382,10 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    width: 90%;
+    width: 95%;
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0;
+    padding: 0 10px;
 }
 
 .logo {
@@ -450,7 +450,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu ul {
     display: flex;
-    gap: 6px;
+    gap: 4px;
     position: relative;
     z-index: 2;
 }
@@ -458,12 +458,13 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link {
     font-family: var(--font-heading);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     position: relative;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 9999px;
     display: block;
+    white-space: nowrap;
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
@@ -2039,6 +2040,15 @@ body.project-detail-open {
 @media (max-width: 1024px) {
     :root {
         --container-width: 900px;
+    }
+    
+    .nav-link {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .nav-menu ul {
+        gap: 2px;
     }
     
     .hero-title {
