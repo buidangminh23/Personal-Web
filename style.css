@@ -51,8 +51,8 @@
     --bg-primary: #f4f5f8;
     --bg-secondary: #ffffff;
     --bg-navbar: rgba(244, 245, 248, 0.85);
-    --text-primary: #111827;
-    --text-secondary: #4b5563;
+    --text-primary: #09090d;
+    --text-secondary: #2d3748;
     
     /* Brand Accent Colors (Light Theme overrides for WCAG contrast compliance) */
     --primary: #1d4ed8;
